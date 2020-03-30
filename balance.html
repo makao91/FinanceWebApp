@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<meta charset="utf-8" />
+	<title>Tytuł</title>
+	<meta name="description" content="Opis strony" />
+	<meta name="keywords" content="slowa, klucze" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	
+	<link rel="stylesheet" href="css_style.css" type="text/css"/>
+	
+	<script>
+	var dzisiaj = new Date();
+		var miesiac = dzisiaj.getMonth();
+		var rok = dzisiaj.getFullYear();
+	function currentDateYandM ()
+	{		
+		document.getElementById("currentDate").innerHTML = miesiac+1+"/"+rok;		
+	}
+	function currentDateY ()
+	{		
+		document.getElementById("currentDate").innerHTML = rok;		
+	}			
+	function previousDateYandM ()
+	{		
+		document.getElementById("currentDate").innerHTML = miesiac+"/"+rok;		
+	}
+	function displayDate()
+	{
+		document.getElementById("templDate").style.display = 'initial';		
+	}
+			
+			
+	</script>
+	
+</head>
+
+<body onload="currentDateYandM()">
+	<div id="containerBalance">				
+		<div class="balanceDate">		
+			
+			<ol>				
+					<li><span id="monthLogo">Wybierz okres</span>
+						<ul>				
+							<li><span  onclick="currentDateYandM()">Bieżący miesiąc</span></li>
+							<li><span  onclick="previousDateYandM()">Poprzedni miesiąc</span></li>
+							<li><span  onclick="currentDateY()">Bieżący rok</span></li>							
+							<li><span onclick="displayDate()">Inny okres</span></li>
+							<input id="templDate" type="date"/>
+						</ul>
+					</li>
+			</ol>			
+		</div>
+		<div style="clear:both;"></div>
+		<span id="period">Wybrany okres:<span type="text" id="currentDate" ></span></span>
+			<div id="array">
+				<div class="array">
+					<table>
+						<tr><td colspan=2>Podsumowanie przychodów:</td></tr>
+						<tr><td>pensja</td><td>300</td></tr>
+						<tr><td>sprzedaż jagód</td><td>200</td></tr>
+						<tr><td>porady</td><td>100</td></tr>
+					</table>
+				</div>
+				<div class="array">
+					<table>
+							<tr><td colspan=2>Podsumowanie wydatków:</td></tr>
+							<tr><td>lizak</td><td>5.00</td></tr>
+							<tr><td>bułka</td><td>8.00</td></tr>
+							<tr><td>guma</td><td>4.00</td></tr>
+						</table>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+			<div class="backToMenu">
+			<a href="menu.html">Powrót do menu</a>
+			</div>
+	</div>
+</body>
+</html>

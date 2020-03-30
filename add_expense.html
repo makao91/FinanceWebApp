@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<meta charset="utf-8" />
+	<title>Tytuł</title>
+	<meta name="description" content="Opis strony" />
+	<meta name="keywords" content="slowa, klucze" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	
+	<link rel="stylesheet" href="css_style.css" type="text/css"/>
+	
+</head>
+
+<body>	
+		<div class="expenseContainer">
+			Kwota: <input class="input" type="number" step="0.01"/><br>
+			<label for="expense">Rodzaj przychodu</label>
+			 <select  id="expense" name="expense">		
+						<option   selected> Wynagrodzenie </option>
+						<option> Odsetki bankowe </option>
+						<option> Sprzedaż na allegro </option>
+						<option> Inne </option>				
+			</select><br>
+			<label for="comment">Komentarz (opcjonalny):</label>
+			<textarea id="comment" rows="4" cols="80" ></textarea>
+			<input type="submit" value="Potwierdź">
+			<div class="backToMenu">
+			<a href="menu.html">Powrót do menu</a>
+			</div>
+		</div>
+</body>
+</html>
