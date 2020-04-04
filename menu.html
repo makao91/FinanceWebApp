@@ -10,15 +10,27 @@
 	<link rel="stylesheet" href="css/fontello.css" >
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Paaji+2:400,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css_style.css" type="text/css"/>
-
+	<script src="customjs.js"></script>
 </head>
 
 <body>
 	<main>
+		<header>
+			<div class="row container mt-5">
+				<div class="col-lg-4 ">
+					<img class="mt-2" src="img/menu1.jpg" alt="balans1" style="width:100%;">
+				</div>
+				<div class="col-lg-4 text-center">
+					<p id="menuM" class="text-center mt-5 balanceTitle" >Menu główne</p>
+				</div>
+				<div class="col-lg-4">
+					<img class="mt-2" src="img/menu2.jpg" alt="balans2" style="width:100%;">
+				</div>
+			</div>
+		</header>
 		<div class="row align-items-center">
 			<div class="col-12 text-center">
-				<div class="container">
-					<p id="menuM">Menu główne</p>
+				<div class="container mt-5">
 					<div class="btn-group-vertical btn-block" role="group" aria-label="First group">
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addIncome">Dodaj przychód</button>
 						<div class="modal fade" id="addIncome" tabindex="-1" role="dialog" aria-labelledby="addIncome" aria-hidden="true">
@@ -37,22 +49,22 @@
 											</div>
 											<div class="row width-100">
 												<div class="col-3">
-													<button type="submit" class="btn btn-info">Dzisiaj?</button>
+													<button type="button" onclick='currentDateYMD("dayTarget")' class="btn btn-info">Dzisiaj?</button>
 												</div>
 												<div class="col-6 ml-0">
 													<div class="form-group">
-														<input type="date" id="date"></input>
+														<input type="date" id="dayTarget"></input>
 													</div>
 												</div>
 												<div class="col-3">
-													<button type="submit" class="btn btn-info">Wczoraj?</button>
+													<button type="button" onclick='previousDateYMD("dayTarget")' class="btn btn-info">Wczoraj?</button>
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-8">
 													<div class="input-group mb-3">
 														<div class="input-group-prepend">
-															<label class="input-group-text" for="inputGroupSelect01">Kategorie</label>
+															<label class="input-group-text" for="inputGroupSelect01">Kategoria</label>
 														</div>
 														<select class="custom-select-md" id="inputGroupSelect01">
 															<option selected>wybierz...</option>
@@ -82,8 +94,111 @@
 								</div>
 							</div>
 						</div>
-						<button type="button" class="btn btn-danger btn-lg">Dodaj wydatek</button>
-						<button type="button" class="btn btn-info btn-lg">Przeglądaj bilans</button>
+						<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#addExpense">Dodaj wydatek</button>
+						<div class="modal fade" id="addExpense" tabindex="-1" role="dialog" aria-labelledby="addExpense" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="income">Nowy wydatek</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<form>
+											<div class="row width-100 justify-content-center mb-3">
+												<div class="d-inline mx-3">
+													<div class="input-group">
+													  <div class="input-group-prepend">
+													    <div class="input-group-text">
+													      <input type="radio" active aria-label="gotówka">Karta debetowa</input>
+													    </div>
+													  </div>
+													</div>
+												</div>
+												<div class="d-inline mr-3">
+													<div class="input-group">
+														<div class="input-group-prepend">
+															<div class="input-group-text">
+																<input type="radio" aria-label="gotówka">Gotówka</input>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="d-inline mr-3">
+													<div class="input-group">
+														<div class="input-group-prepend">
+															<div class="input-group-text">
+																<input type="radio" aria-label="gotówka">Karta kredytowa</input>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<input type="number" step="0.01" placeholder="kwota" class="form-control" id="amount">
+											</div>
+											<div class="row width-100">
+												<div class="col-3">
+													<button type="button" onclick='currentDateYMD("dayTargetE")' class="btn btn-info">Dzisiaj?</button>
+												</div>
+												<div class="col-6 ml-0">
+													<div class="form-group">
+														<input type="date" id="dayTargetE"></input>
+													</div>
+												</div>
+												<div class="col-3">
+													<button type="button" onclick='previousDateYMD("dayTargetE")' class="btn btn-info">Wczoraj?</button>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-8">
+													<div class="input-group mb-3">
+														<div class="input-group-prepend">
+															<label class="input-group-text" for="inputGroupSelect01">Kategoria</label>
+														</div>
+														<select class="custom-select-md" id="inputGroupSelect01">
+															<option selected>wybierz...</option>
+															<option value="1">Jedzenie</option>
+															<option value="2">Mieszkanie</option>
+															<option value="3">Transport</option>
+															<option value="4">Telekomunikacja</option>
+															<option value="5">Opieka zdrowotna</option>
+															<option value="6">Ubranie</option>
+															<option value="7">Higiena</option>
+															<option value="8">Dzieci</option>
+															<option value="9">Rozrywka</option>
+															<option value="10">Wycieczka</option>
+															<option value="11">Szkolenia</option>
+															<option value="12">Książki</option>
+															<option value="13">Oszczędności</option>
+															<option value="14">Emerytura</option>
+															<option value="15">Spłata długów</option>
+															<option value="16">Darowizna</option>
+															<option value="17">Inne wydatki</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-1.5">
+													<a href=""><p>[Dodaj]</p></a>
+												</div>
+												<div class="col-1.5">
+													<a href=""><p>[Usuń]</p></a>
+												</div>
+											</div>
+											<div class="form-group">
+												<textarea class="form-control" placeholder="Komentarz (opcjonalny)" id="comment" aria-label="With textarea"></textarea>
+											</div>
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+										<button type="button" class="btn btn-primary">Dodaj</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<a href="balance.html"><button type="button" class="btn btn-info btn-lg">Przeglądaj bilans</button></a>
 						<button type="button" class="btn btn-warning btn-lg">Ustawienia</button>
 						<a href="index.html"><button type="button" class="btn btn-secondary btn-lg">Wyloguj się</button></a>
 					</div>
@@ -94,5 +209,6 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="js/bootstrap.min.js"></script>
+
 </body>
 </html>
