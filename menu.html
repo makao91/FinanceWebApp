@@ -15,21 +15,65 @@
 
 <body>
 	<main>
+		<section>
+			<button type="button" class="btn btn-lg btn-warning btn-warning-inverse d-inline-block">Edytuj imię</button>
+			<button type="button" class="btn btn-lg btn-warning btn-warning-inverse d-inline-block">Edytuj e-mail</button>
+			<button type="button" class="btn btn-lg btn-warning btn-warning-inverse d-inline-block">Zmień hasło</button>
+		</section>
 		<header>
 			<div class="row container mt-5">
 				<div class="col-lg-4 ">
 					<img class="mt-2" src="img/menu1.jpg" alt="balans1" style="width:100%;">
 				</div>
-				<div class="col-lg-4 text-center">
-					<p id="menuM" class="text-center mt-5 balanceTitle" >Menu główne</p>
+				<div class="col-lg-4 text-center marginY">
+					<p class="menuM" class="balanceTitle" >Menu główne</p>
 				</div>
 				<div class="col-lg-4">
 					<img class="mt-2" src="img/menu2.jpg" alt="balans2" style="width:100%;">
 				</div>
 			</div>
 		</header>
-		<div class="row align-items-center">
-			<div class="col-12 text-center">
+		<div class="row">
+			<div class="col-xl-3 container containerLeft mt-5">
+					<ul class="lista"><span class="menuM editionMenuL">Edycja przychodów</span>
+						<li>
+							<button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#addCat">Dodaj kategorię</button>
+							<div class="modal fade" id="addCat" tabindex="-1" role="dialog" aria-labelledby="dodajKategorie" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="dodajKategorie">Dodaj kategorię</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<form>
+												<div class="form-group">
+													<input type="text" placeholder="nazwa nowej kategorii" class="form-control" id="catIN">
+												</div>
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+											<button type="submit" onclick='addCategoryIN()' data-dismiss="modal" class="btn btn-primary">Dodaj</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="">
+							<button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#addCat">Usuń kategorię</button>
+						</li>
+						<li>
+							<button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#addCat">Edytuj kategorię</button>
+						</li>
+						<li>
+							<button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#addCat">Usuń ostatni przychód</button>
+						</li>
+					</ul>
+			</div>
+			<div class="col-xl-5 text-center">
 				<div class="container mt-5">
 					<div class="btn-group-vertical btn-block" role="group" aria-label="First group">
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addIncome">Dodaj przychód</button>
@@ -94,7 +138,7 @@
 								</div>
 							</div>
 						</div>
-						<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#addExpense">Dodaj wydatek</button>
+						<button type="button" class="btn btn-danger btn-lg mt-1" data-toggle="modal" data-target="#addExpense">Dodaj wydatek</button>
 						<div class="modal fade" id="addExpense" tabindex="-1" role="dialog" aria-labelledby="addExpense" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
@@ -155,9 +199,9 @@
 												<div class="col-8">
 													<div class="input-group mb-3">
 														<div class="input-group-prepend">
-															<label class="input-group-text" for="inputGroupSelect01">Kategoria</label>
+															<label class="input-group-text" for="inputEX">Kategoria</label>
 														</div>
-														<select class="custom-select-md" id="inputGroupSelect01">
+														<select class="custom-select-md" id="inputEX">
 															<option selected>wybierz...</option>
 															<option value="1">Jedzenie</option>
 															<option value="2">Mieszkanie</option>
@@ -198,12 +242,48 @@
 								</div>
 							</div>
 						</div>
-						<a href="balance.html"><button type="button" class="btn btn-info btn-lg">Przeglądaj bilans</button></a>
-						<button type="button" class="btn btn-warning btn-lg">Ustawienia</button>
-						<a href="index.html"><button type="button" class="btn btn-secondary btn-lg">Wyloguj się</button></a>
+						<a href="balance.html"><button type="button" class="btn btn-success btn-lg mt-1">Przeglądaj bilans</button></a>
+						<a href="index.html"><button type="button" class="btn btn-secondary btn-lg mt-1">Wyloguj się</button></a>
 					</div>
 				</div>
 			</div>
+			<div class="col-xl-3 container containerRight mt-5">
+					<ul class="lista"><span class="menuM editionMenuR">Edycja wydatków</span>
+						<li>
+							<button type="button" class="btn btn-danger mb-1" data-toggle="modal" data-target="#addCat">Dodaj kategorię</button>
+							<div class="modal fade" id="addCat" tabindex="-1" role="dialog" aria-labelledby="dodajKategorie" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="dodajKategorie">Dodaj kategorię</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											</button>
+										</div>
+										<div class="modal-body">
+											<form>
+												<div class="form-group">
+													<input type="text" placeholder="nazwa nowej kategorii" class="form-control" id="catEX">
+												</div>
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+											<button type="submit" onclick='addCategoryEX()' data-dismiss="modal"class="btn btn-primary">Dodaj</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="">
+							<button type="button" class="btn btn-danger mb-1" data-toggle="modal" data-target="#addCat">Usuń kategorię</button>
+						</li>
+						<li>
+							<button type="button" class="btn btn-danger mb-1" data-toggle="modal" data-target="#addCat">Edytuj kategorię</button>
+						</li>
+						<li>
+							<button type="button" class="btn btn-danger mb-1" data-toggle="modal" data-target="#addCat">Usuń ostatni wydatek</button>
+						</li>
+					</ul>
 		</div>
 	</main>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
