@@ -26,7 +26,7 @@
 					<img class="mt-2" src="img/menu1.jpg" alt="balans1" style="width:100%;">
 				</div>
 				<div class="col-lg-4 text-center marginY">
-					<p class="menuM" class="balanceTitle" >Menu główne</p>
+					<p class="menuM balanceTitle" >Menu główne</p>
 				</div>
 				<div class="col-lg-4">
 					<img class="mt-2" src="img/menu2.jpg" alt="balans2" style="width:100%;">
@@ -35,14 +35,15 @@
 		</header>
 		<div class="row">
 			<div class="col-xl-3 container containerLeft mt-5">
-					<ul class="lista"><span class="menuM editionMenuL">Edycja przychodów</span>
+				<p class="menuM editionMenuL text-center">Edycja przychodów</p>
+					<ul class="lista">
 						<li>
-							<button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#addCat">Dodaj kategorię</button>
-							<div class="modal fade" id="addCat" tabindex="-1" role="dialog" aria-labelledby="dodajKategorie" aria-hidden="true">
+							<button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#addCatIN">Dodaj kategorię</button>
+							<div class="modal fade" id="addCatIN" tabindex="-1" role="dialog" aria-labelledby="dodajKategorieIN" aria-hidden="true">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
-											<h5 class="modal-title" id="dodajKategorie">Dodaj kategorię</h5>
+											<h5 class="modal-title" id="dodajKategorieIN">Dodaj kategorię</h5>
 											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 												<span aria-hidden="true">&times;</span>
 											</button>
@@ -89,7 +90,7 @@
 									<div class="modal-body">
 										<form>
 											<div class="form-group">
-												<input type="number" step="0.01" placeholder="kwota" class="form-control" id="amount">
+												<input type="number" step="0.01" placeholder="kwota" class="form-control" id="amountIN">
 											</div>
 											<div class="row width-100">
 												<div class="col-3">
@@ -97,7 +98,7 @@
 												</div>
 												<div class="col-6 ml-0">
 													<div class="form-group">
-														<input type="date" id="dayTarget"></input>
+														<input type="date" id="dayTarget">
 													</div>
 												</div>
 												<div class="col-3">
@@ -127,7 +128,7 @@
 												</div>
 											</div>
 											<div class="form-group">
-												<textarea class="form-control" placeholder="Komentarz (opcjonalny)" id="comment" aria-label="With textarea"></textarea>
+												<textarea class="form-control" placeholder="Komentarz (opcjonalny)" id="commentIN" aria-label="With textarea"></textarea>
 											</div>
 										</form>
 									</div>
@@ -143,7 +144,7 @@
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h5 class="modal-title" id="income">Nowy wydatek</h5>
+										<h5 class="modal-title" id="expense">Nowy wydatek</h5>
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
@@ -155,7 +156,7 @@
 													<div class="input-group">
 													  <div class="input-group-prepend">
 													    <div class="input-group-text">
-													      <input type="radio" active aria-label="gotówka">Karta debetowa</input>
+													      <input type="radio" checked aria-label="gotówka">Karta debetowa
 													    </div>
 													  </div>
 													</div>
@@ -164,7 +165,7 @@
 													<div class="input-group">
 														<div class="input-group-prepend">
 															<div class="input-group-text">
-																<input type="radio" aria-label="gotówka">Gotówka</input>
+																<input type="radio" aria-label="gotówka">Gotówka
 															</div>
 														</div>
 													</div>
@@ -173,14 +174,14 @@
 													<div class="input-group">
 														<div class="input-group-prepend">
 															<div class="input-group-text">
-																<input type="radio" aria-label="gotówka">Karta kredytowa</input>
+																<input type="radio" aria-label="gotówka">Karta kredytowa
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
 											<div class="form-group">
-												<input type="number" step="0.01" placeholder="kwota" class="form-control" id="amount">
+												<input type="number" step="0.01" placeholder="kwota" class="form-control" id="amountEX">
 											</div>
 											<div class="row width-100">
 												<div class="col-3">
@@ -188,7 +189,7 @@
 												</div>
 												<div class="col-6 ml-0">
 													<div class="form-group">
-														<input type="date" id="dayTargetE"></input>
+														<input type="date" id="dayTargetE">
 													</div>
 												</div>
 												<div class="col-3">
@@ -231,7 +232,7 @@
 												</div>
 											</div>
 											<div class="form-group">
-												<textarea class="form-control" placeholder="Komentarz (opcjonalny)" id="comment" aria-label="With textarea"></textarea>
+												<textarea class="form-control" placeholder="Komentarz (opcjonalny)" id="commentEX" aria-label="With textarea"></textarea>
 											</div>
 										</form>
 									</div>
@@ -248,14 +249,15 @@
 				</div>
 			</div>
 			<div class="col-xl-3 container containerRight mt-5">
-					<ul class="lista"><span class="menuM editionMenuR">Edycja wydatków</span>
+				<p class="menuM editionMenuR text-center">Edycja wydatków</p>
+					<ul class="lista">
 						<li>
-							<button type="button" class="btn btn-danger mb-1" data-toggle="modal" data-target="#addCat">Dodaj kategorię</button>
-							<div class="modal fade" id="addCat" tabindex="-1" role="dialog" aria-labelledby="dodajKategorie" aria-hidden="true">
+							<button type="button" class="btn btn-danger mb-1" data-toggle="modal" data-target="#addCatEX">Dodaj kategorię</button>
+							<div class="modal fade" id="addCatEX" tabindex="-1" role="dialog" aria-labelledby="dodajKategorieEX" aria-hidden="true">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
-											<h5 class="modal-title" id="dodajKategorie">Dodaj kategorię</h5>
+											<h5 class="modal-title" id="dodajKategorieEX">Dodaj kategorię</h5>
 											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											</button>
 										</div>
@@ -268,7 +270,7 @@
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
-											<button type="submit" onclick='addCategoryEX()' data-dismiss="modal"class="btn btn-primary">Dodaj</button>
+											<button type="submit" onclick='addCategoryEX()' data-dismiss="modal" class="btn btn-primary">Dodaj</button>
 										</div>
 									</div>
 								</div>
@@ -284,6 +286,7 @@
 							<button type="button" class="btn btn-danger mb-1" data-toggle="modal" data-target="#addCat">Usuń ostatni wydatek</button>
 						</li>
 					</ul>
+		</div>
 		</div>
 	</main>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
