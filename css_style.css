@@ -51,7 +51,12 @@ img
 	-moz-box-shadow: 0px 8px 10px 4px #5e2d08;
 	box-shadow: 0px 8px 10px 4px #5e2d08;
 	color: white;
-
+}
+.btn-success:hover
+{
+	-webkit-box-shadow: 0px 8px 10px 4px #006622;
+	-moz-box-shadow: 0px 8px 10px 4px #006622;
+	box-shadow: 0px 8px 10px 4px #006622;
 }
 .btn-primary:hover
 {
@@ -85,9 +90,9 @@ img
 }
 .carousel-control-next:focus, .carousel-control-next:hover, .carousel-control-prev:focus, .carousel-control-prev:hover
 {
-	opacity: 0.3;
+	opacity: 1;
 }
-#menuM
+.menuM
 {
 	font-weight: bold;
 	font-size: 35px;
@@ -105,6 +110,7 @@ img
 a
 {
 	width: 100%;
+	color: white;
 }
 a:hover
 {
@@ -138,7 +144,7 @@ a:hover
 h1 {
   font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
   font-size: 92px;
-  padding: 80px 50px;
+  padding: 50px 50px;
   text-align: center;
   text-transform: uppercase;
   text-rendering: optimizeLegibility;
@@ -178,7 +184,7 @@ h1 {
       -27px 54px 1px #e2e0df,
       -28px 56px 1px #e4e3e2;
   }
-	.sticky
+	.stickyL
 	{
 		width: 100%;
 		position: fixed;
@@ -186,3 +192,64 @@ h1 {
 		top: 0;
 		z-index: 100;
 	}
+.containerRight
+{
+background-color:#ffb3b3;
+width: 300px; !important
+}
+
+.containerLeft
+{
+background-color:#b3ccff;
+width: 300px;
+}
+.sticky
+{
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 100;
+}
+.lista
+{
+	list-style-type: none;
+}
+.editionMenuR
+{
+	font-size: 20px;
+	color: #990000;
+	border: none;
+}
+.editionMenuL
+{
+	font-size: 20px;
+	color: #003399;
+	border: none;
+}
+.marginY
+{
+	margin-top: auto;
+	margin-bottom: auto;
+	height: 100%;
+}
+.marginX
+{
+	margin-right: auto;
+	margin-left: auto;
+	height: 100%;
+}
+
+@media (min-width: 1200px)
+{
+	.containerLeft
+	{
+		width: 300px;
+		flex: none;
+	}
+	.containerRight
+	{
+		width: 300px;
+		flex: none;
+	}
+}
