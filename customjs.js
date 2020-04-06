@@ -56,21 +56,37 @@ function start()
   document.getElementById("currDate").innerHTML = miesiac+"/"+rok;
 }
 
-// function addCategoryIN ()
+function addCategoryIN ()
+{
+  var newCat = document.getElementById("catIN").value;
+  var x = document.getElementById("inputGroupSelect01");
+  var option = document.createElement("option");
+  option.text = newCat;
+  x.add(option);
+  document.getElementById("catIN").value = "";
+}
+function addCategoryEX ()
+{
+  var newCat = document.getElementById("catEX").value;
+  var x = document.getElementById("inputEX");
+  var option = document.createElement("option");
+  option.text = newCat;
+  x.add(option);
+  document.getElementById("catEX").value = "";
+}
+// function loadINcategory ()
 // {
-//   var newCat = document.getElementById("catIN").value;
-//   var x = document.getElementById("inputGroupSelect01");
+//   var innOptions = new Array();
+//
+//   innOptions = document.getElementById("inputGroupSelect01").value;
+//   alert(arrray[3]);
+//   var inCatTodel = document.getElementById("catINtoDel");
 //   var option = document.createElement("option");
-//   option.text = newCat;
-//   x.add(option);
-// }
-// function addCategoryEX ()
-// {
-//   var newEX = document.getElementById("catEX").value;
-//   var y = document.getElementById("inputEX");
-//   var optn = document.createElement("option");
-//   option.text = newEX;
-//   y.add(optn);
+//     for(i=0; i<inCat.length; i++)
+//     {
+//       option.text = inCat.charAt(i);
+//       x.add(option);
+//     }
 // }
 
 

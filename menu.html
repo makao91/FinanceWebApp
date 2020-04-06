@@ -34,47 +34,7 @@
 			</div>
 		</header>
 		<div class="row">
-			<div class="col-xl-3 container containerLeft mt-5">
-				<p class="menuM editionMenuL text-center">Edycja przychodów</p>
-					<ul class="lista">
-						<li>
-							<button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#addCatIN">Dodaj kategorię</button>
-							<div class="modal fade" id="addCatIN" tabindex="-1" role="dialog" aria-labelledby="dodajKategorieIN" aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h5 class="modal-title" id="dodajKategorieIN">Dodaj kategorię</h5>
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-										</div>
-										<div class="modal-body">
-											<form>
-												<div class="form-group">
-													<input type="text" placeholder="nazwa nowej kategorii" class="form-control" id="catIN">
-												</div>
-											</form>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
-											<button type="submit" onclick='addCategoryIN()' data-dismiss="modal" class="btn btn-primary">Dodaj</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="">
-							<button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#addCat">Usuń kategorię</button>
-						</li>
-						<li>
-							<button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#addCat">Edytuj kategorię</button>
-						</li>
-						<li>
-							<button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#addCat">Usuń ostatni przychód</button>
-						</li>
-					</ul>
-			</div>
-			<div class="col-xl-5 text-center">
+			<div class="col-lg-6 order-lg-2 text-center ">
 				<div class="container mt-5">
 					<div class="btn-group-vertical btn-block" role="group" aria-label="First group">
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addIncome">Dodaj przychód</button>
@@ -248,7 +208,75 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xl-3 container containerRight mt-5">
+			<div class="col-lg-3 order-lg-1 container containerLeft mt-5 ">
+				<p class="menuM editionMenuL text-center">Edycja przychodów</p>
+					<ul class="lista">
+						<li>
+							<button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#addCatIN">Dodaj kategorię</button>
+							<div class="modal fade" id="addCatIN" tabindex="-1" role="dialog" aria-labelledby="dodajKategorieIN" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="dodajKategorieIN">Dodaj kategorię</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											</button>
+										</div>
+										<div class="modal-body">
+											<form>
+												<div class="form-group">
+													<input type="text" placeholder="nazwa nowej kategorii" class="form-control" id="catIN">
+												</div>
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+											<button type="submit" onclick='addCategoryIN()' data-dismiss="modal" class="btn btn-primary">Dodaj</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="">
+							<button type="button" class="btn btn-primary mb-1" onclick="loadINcategory()" data-toggle="modal" data-target="#delCatIN">Usuń kategorię</button>
+							<div class="modal fade" id="delCatIN" tabindex="-1" role="dialog" aria-labelledby="usunKategorieIN" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="usunKategorieIN">Usuń kategorię</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											</button>
+										</div>
+										<div class="modal-body">
+											<form>
+												<div class="form-group">
+													<div class="input-group">
+														<div class="input-group-prepend">
+															<label class="input-group-text" for="catINtoDel">Kategoria</label>
+														</div>
+														<select class="custom-select-md" id="catINtoDel">
+															<option selected>wybierz...</option>
+														</select>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+											<button type="submit" onclick='delCategoryIN()' data-dismiss="modal" class="btn btn-primary">Potwierdź</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#addCat">Edytuj kategorię</button>
+						</li>
+						<li>
+							<button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#addCat">Usuń ostatni przychód</button>
+						</li>
+					</ul>
+			</div>
+			<div class="col-lg-3 order-lg-3 container containerRight mt-5 ">
 				<p class="menuM editionMenuR text-center">Edycja wydatków</p>
 					<ul class="lista">
 						<li>
