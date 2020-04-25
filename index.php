@@ -1,5 +1,11 @@
 <?php
 	session_start( );
+
+	if((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
+	{
+		header('Location: menu.php');
+		exit();
+	}
  ?>
 
 <!DOCTYPE HTML>
@@ -16,7 +22,6 @@
 	<link rel="stylesheet" href="css/fontello.css" >
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Paaji+2:400,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css_style.css" type="text/css"/>
-
 	<script src="customjs.js"></script>
 
 </head>
@@ -144,7 +149,6 @@
 					</div>
 				</div>
 <script>
-
 $(document).ready(function(){
 		 $('#log-butt').click(function(){
 					var emailLog = $('#emailLog').val();
@@ -156,7 +160,7 @@ $(document).ready(function(){
 										method:"POST",
 										data: {emailLog:emailLog, passwordLog:passwordLog},
 										success:function(data)
-										{												
+										{
 												 if(data == false)
 												 {
 															alert("Niepoprawny login lub hasło.");
@@ -173,21 +177,9 @@ $(document).ready(function(){
 							 alert("Oba pola są wymagane");
 					}
 		 });
-		 $('#logout').click(function(){
-					var action = "logout";
-					$.ajax({
-							 url:"action.php",
-							 method:"POST",
-							 data:{action:action},
-							 success:function()
-							 {
-										location.reload();
-							 }
-					});
-		 });
+
 });
 </script>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="js/bootstrap.min.js"></script>
