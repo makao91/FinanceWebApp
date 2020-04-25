@@ -1,3 +1,7 @@
+<?php
+	session_start( );
+ ?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -7,6 +11,7 @@
 	<meta name="keywords" content="slowa, klucze" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="css/bootstrap.min.css" >
 	<link rel="stylesheet" href="css/fontello.css" >
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Paaji+2:400,700&display=swap" rel="stylesheet">
@@ -67,9 +72,14 @@
 			<div class="col-lg-4">
 				<p>Przed tobą aplikacja, która pomoże zawładnąć twoimi finansami.</p>
 				<p class="h4">Bądź świadom, na co przeznaczasz swoje pieniądze!</p>
-				<button type="submit" class="btn btn-warning mt-4 btn-shadow btn-lg " data-toggle="modal" data-target="#logging" data-whatever="##">Zaloguj się</button>
-				<button type="submit" class="btn btn-warning mt-4 btn-lg " data-toggle="modal" data-target="#registrating" data-whatever="##">Zarejestruj się</button>
-
+				<button type="button" class="btn btn-warning mt-4 btn-shadow btn-lg " data-toggle="modal" data-target="#logging" data-whatever="">Zaloguj się</button>
+				<button type="button" class="btn btn-warning mt-4 btn-lg " data-toggle="modal" data-target="#registrating" data-whatever="##">Zarejestruj się</button>
+			</div>
+		</div>
+	</div>
+</main>
+</body>
+</html>
 				<div class="modal fade" id="registrating" tabindex="-1" role="dialog" aria-labelledby="panelRejestracji" aria-hidden="true">
 				  <div class="modal-dialog" role="document">
 				    <div class="modal-content">
@@ -80,31 +90,31 @@
 				        </button>
 				      </div>
 				      <div class="modal-body">
-				        <form>
+				        <form action="registration.php" method="post">
 									<div class="form-group">
-								    <i class="icon-user float-left mr-1"></i><input type="text" placeholder="Imię" class="form-control" id="imie" aria-describedby="imie">
+								    <i class="icon-user float-left mr-1"></i><input type="text" placeholder="Imię" class="form-control" name="imie" aria-describedby="imie">
 								  </div>
 									<div class="form-group">
-								   <i class="icon-mail float-left mr-1"></i> <input type="email" placeholder="E-mail" class="form-control" id="email" aria-describedby="email">
+								   <i class="icon-mail float-left mr-1"></i> <input type="email" placeholder="E-mail" class="form-control" name="email" aria-describedby="email">
 								  </div>
 								  <div class="form-group">
-								   <i class="icon-lock float-left mr-1"></i> <input type="password" placeholder="Hasło" class="form-control" id="password">
+								   <i class="icon-lock float-left mr-1"></i> <input type="passwordLog" placeholder="Hasło" class="form-control" name="passwordLog">
 								  </div>
 									<div class="form-group">
-								    <i class="icon-lock-circled float-left mr-1"></i><input type="password" placeholder="Powtórz hasło" class="form-control form-control-sm" id="password2">
+								    <i class="icon-lock-circled float-left mr-1"></i><input type="passwordLog" placeholder="Powtórz hasło" class="form-control form-control-sm" name="passwordLog2">
 								  </div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										<button type="submit" class="btn btn-primary btn-lg btn-block">Zarejestruj się</button>
+									</div>
 				        </form>
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				        <a href="index.html"><button type="button" class="btn btn-primary btn-lg btn-block">Zarejestruj się</button></a>
 				      </div>
 				    </div>
 				  </div>
 				</div>
 
 				<div class="modal fade" id="logging" tabindex="-1" role="dialog" aria-labelledby="panelLogowania" aria-hidden="true">
-					<div class="modal-dialog" role="document">
+					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
 								<h5 class="modal-title" id="panelLogowania">Panel logowania</h5>
@@ -113,40 +123,71 @@
 								</button>
 							</div>
 							<div class="modal-body">
-								<form>
+								<form id="insert_form" method="post">
 									<div class="form-group">
-										<i class="icon-mail float-left mr-1"></i> <input type="email" placeholder="E-mail" class="form-control" id="emailLog" aria-describedby="emailLog">
+										<i class="icon-mail float-left mr-1"></i> <input type="email" placeholder="E-mail" class="form-control" id="emailLog" name="emailLog" aria-describedby="emailLog"/>
 									</div>
 									<div class="form-group">
-									<i class="icon-lock float-left mr-1"></i>	<input type="password" placeholder="Hasło" class="form-control" id="passwordLog">
+									<i class="icon-lock float-left mr-1"></i>	<input type="password" placeholder="Hasło" class="form-control" id="passwordLog" name="passwordLog"/>
 									</div>
 									<div class="form-check">
 										<input type="checkbox" class="form-check-input float-left" id="zapamietajMnie">
 										<label class="form-check-label" for="zapamietajMnie">Zapamiętaj mnie</label>
 									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										<button type="button" name="log-butt" id="log-butt" class="btn btn-primary btn-lg btn-block">Zaloguj się</button>
+									</div>
 								</form>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-								<a href="menu.html"><button type="button" class="btn btn-primary btn-lg btn-block">Zaloguj się</button></a>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
-</main>
+<script>
+
+$(document).ready(function(){
+		 $('#log-butt').click(function(){
+					var emailLog = $('#emailLog').val();
+					var passwordLog = $('#passwordLog').val();
+					if(emailLog != '' && passwordLog != '')
+					{
+							 $.ajax({
+										url:"login.php",
+										method:"POST",
+										data: {emailLog:emailLog, passwordLog:passwordLog},
+										success:function(data)
+										{												
+												 if(data == false)
+												 {
+															alert("Niepoprawny login lub hasło.");
+												 }
+												 else if (data == true)
+												 {
+															window.location = "menu.php";
+												 }
+										}
+							 });
+					}
+					else
+					{
+							 alert("Oba pola są wymagane");
+					}
+		 });
+		 $('#logout').click(function(){
+					var action = "logout";
+					$.ajax({
+							 url:"action.php",
+							 method:"POST",
+							 data:{action:action},
+							 success:function()
+							 {
+										location.reload();
+							 }
+					});
+		 });
+});
+</script>
 
 
-
-
-
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="js/bootstrap.min.js"></script>
-
-</body>
-</html>
