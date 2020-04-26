@@ -86,7 +86,7 @@
 </body>
 </html>
 				<div class="modal fade" id="registrating" tabindex="-1" role="dialog" aria-labelledby="panelRejestracji" aria-hidden="true">
-				  <div class="modal-dialog" role="document">
+				  <div class="modal-dialog">
 				    <div class="modal-content">
 				      <div class="modal-header">
 				        <h5 class="modal-title" id="panelRejestracji">Panel rejestracji</h5>
@@ -95,22 +95,22 @@
 				        </button>
 				      </div>
 				      <div class="modal-body">
-				        <form action="registration.php" method="post">
+				        <form id="registration" method="post">
 									<div class="form-group">
-								    <i class="icon-user float-left mr-1"></i><input type="text" placeholder="Imię" class="form-control" name="imie" aria-describedby="imie">
+								    <i class="icon-user float-left mr-1"></i><input type="text" placeholder="Imię" class="form-control" id="nameReg" name="nameReg" aria-describedby="imie"/>
 								  </div>
 									<div class="form-group">
-								   <i class="icon-mail float-left mr-1"></i> <input type="email" placeholder="E-mail" class="form-control" name="email" aria-describedby="email">
+								   <i class="icon-mail float-left mr-1"></i> <input type="email" placeholder="E-mail" class="form-control" name="emailReg" id="emailReg" aria-describedby="email"/>
 								  </div>
 								  <div class="form-group">
-								   <i class="icon-lock float-left mr-1"></i> <input type="passwordLog" placeholder="Hasło" class="form-control" name="passwordLog">
+								   <i class="icon-lock float-left mr-1"></i> <input type="password" placeholder="Hasło" class="form-control" id="passwordReg" name="passwordReg"/>
 								  </div>
 									<div class="form-group">
-								    <i class="icon-lock-circled float-left mr-1"></i><input type="passwordLog" placeholder="Powtórz hasło" class="form-control form-control-sm" name="passwordLog2">
+								    <i class="icon-lock-circled float-left mr-1"></i><input type="password" placeholder="Powtórz hasło" class="form-control form-control-sm" id="passwordReg2" name="passwordReg2"/>
 								  </div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-primary btn-lg btn-block">Zarejestruj się</button>
+										<button type="button" name="reg-butt" id="reg-butt" class="btn btn-primary btn-lg btn-block">Zarejestruj się</button>
 									</div>
 				        </form>
 				      </div>
@@ -134,10 +134,6 @@
 									</div>
 									<div class="form-group">
 									<i class="icon-lock float-left mr-1"></i>	<input type="password" placeholder="Hasło" class="form-control" id="passwordLog" name="passwordLog"/>
-									</div>
-									<div class="form-check">
-										<input type="checkbox" class="form-check-input float-left" id="zapamietajMnie">
-										<label class="form-check-label" for="zapamietajMnie">Zapamiętaj mnie</label>
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -178,7 +174,46 @@ $(document).ready(function(){
 					}
 		 });
 
+		 		 $('#reg-butt').click(function(){
+					var nameReg = $('#nameReg').val();
+					var emailReg = $('#emailReg').val();
+					var passwordReg = $('#passwordReg').val();
+					var passwordReg2 = $('#passwordReg2').val();
+					if(emailReg != '' && passwordReg != '' && passwordReg2 != '' && nameReg != '')
+					{
+						if(passwordReg==passwordReg2)
+						{
+										$.ajax({
+										url:"registration.php",
+										method:"POST",
+										data: {nameReg:nameReg, emailReg:emailReg, passwordReg:passwordReg, passwordReg2:passwordReg2},
+										success:function(data)
+										{alert(data);
+												 if(data == false)
+												 {
+															alert("Uzytkownik o wskazanym adresie email już istnieje. Spróbuj się zalogować lub wprowadzić inny adres email.");
+												 }
+												 else if (data == true)
+												 {
+															window.location = "index.php";
+															alert("Uzytkownik zarejestrowany pomyślnie. Można się zalogować.");
+												 }
+										}
+							 });
+						}
+						else
+						{
+							alert("Wprowadzone hasła są różne.");
+						}
+					}
+					else
+					{
+							 alert("Wszystkie pola są wymagane.");
+					}
+		 });
+
 });
+
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
