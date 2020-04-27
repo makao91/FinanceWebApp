@@ -6,6 +6,8 @@
 		header('Location: menu.php');
 		exit();
 	}
+
+
  ?>
 
 <!DOCTYPE HTML>
@@ -23,6 +25,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Paaji+2:400,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css_style.css" type="text/css"/>
 	<script src="customjs.js"></script>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </head>
 
@@ -108,9 +111,15 @@
 									<div class="form-group">
 								    <i class="icon-lock-circled float-left mr-1"></i><input type="password" placeholder="Powtórz hasło" class="form-control form-control-sm" id="passwordReg2" name="passwordReg2"/>
 								  </div>
+									<div class="form-group">
+								    <div class="g-recaptcha" data-sitekey="6LdTuu4UAAAAAHuRmUPnRoKcpf7QQWrgHvemRSeA"></div>
+								  </div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-										<button type="button" name="reg-butt" id="reg-butt" class="btn btn-primary btn-lg btn-block">Zarejestruj się</button>
+										<label class="regulamin">
+											<input  type="checkbox" name="statute" id="statute">Akceptuję regulamin</input>
+										</label>
+										<button type="submit" name="reg-butt" id="reg-butt" class="btn btn-primary btn-lg btn-block">Zarejestruj się</button>
+									</div>
 									</div>
 				        </form>
 				      </div>
@@ -159,7 +168,11 @@ $(document).ready(function(){
 										{
 												 if(data == false)
 												 {
-															alert("Niepoprawny login lub hasło.");
+															alert("Takie konto nie istnieje. Wprowadz poprawnie adres email.");
+												 }
+												 else if(data == 3)
+												 {
+													 alert("Niepoprawne hasło.");
 												 }
 												 else if (data == true)
 												 {
@@ -179,27 +192,60 @@ $(document).ready(function(){
 					var emailReg = $('#emailReg').val();
 					var passwordReg = $('#passwordReg').val();
 					var passwordReg2 = $('#passwordReg2').val();
+					var statute = document.getElementById('statute');
+					<?php
+					$_SESSION['recaptcha'] = $_POST['g-recaptcha-response'];
+					?>
 					if(emailReg != '' && passwordReg != '' && passwordReg2 != '' && nameReg != '')
 					{
 						if(passwordReg==passwordReg2)
 						{
+							if(nameReg.length>=3 && nameReg.length<=20)
+							{
+								if(passwordReg.length>=5 && passwordReg.length<=20)
+								{
+									if(statute.checked == true)
+									{
 										$.ajax({
 										url:"registration.php",
 										method:"POST",
 										data: {nameReg:nameReg, emailReg:emailReg, passwordReg:passwordReg, passwordReg2:passwordReg2},
 										success:function(data)
 										{alert(data);
-												 if(data == false)
+												 if(data == 1)
 												 {
 															alert("Uzytkownik o wskazanym adresie email już istnieje. Spróbuj się zalogować lub wprowadzić inny adres email.");
 												 }
-												 else if (data == true)
+												 else if(data == 2)
+												 {
+													 alert("Podaj poprawny adres email.");
+												 }
+												 else if (data == 3)
 												 {
 															window.location = "index.php";
 															alert("Uzytkownik zarejestrowany pomyślnie. Można się zalogować.");
 												 }
+												 else if (data == 4)
+												 {
+													 alert("Botom podziękujemy.");
+												 }
 										}
-							 });
+							 		});
+									}
+									else
+									{
+										alert("Zaakceptuj regulamin.");
+									}
+								}
+								else
+								{
+									alert("Hasło musi zawierać od 5 do 20 znaków.");
+								}
+							}
+							else
+							{
+								alert("Imię musi mieć od 3 do 20 znaków.");
+							}
 						}
 						else
 						{

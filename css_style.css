@@ -253,3 +253,9 @@ width: 300px;
 		flex: none;
 	}
 }
+.regulamin
+{
+	font-size: 40px;
+	color: black;
+	cursor: pointer;
+}

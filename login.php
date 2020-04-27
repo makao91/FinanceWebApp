@@ -12,7 +12,6 @@ $user_login = $_POST["emailLog"];
 $user_password = $_POST["passwordLog"];
 
 $user_login = htmlentities($user_login, ENT_QUOTES, "UTF-8");
-$user_password = htmlentities($user_password, ENT_QUOTES, "UTF-8");
 
  if(isset($_POST["emailLog"]))
  {
@@ -23,26 +22,34 @@ $user_password = htmlentities($user_password, ENT_QUOTES, "UTF-8");
       ";
 
       if($result = @$connect->query(
-				sprintf("SELECT * FROM users WHERE email='%s' AND password='%s'",
-				mysqli_real_escape_string($connect,$user_login),
-				mysqli_real_escape_string($connect,$user_password))))
+				sprintf("SELECT * FROM users WHERE email='%s'",
+				mysqli_real_escape_string($connect,$user_login))))
       {
 				$how_many_users = $result->num_rows;
 				if($how_many_users > 0)
 				{
-					$_SESSION['zalogowany'] = true;
-					$row = $result->fetch_assoc();
-           $_SESSION['emailLog'] = $row['email'];
-           $_SESSION['id'] = $row['id'];
-           $_SESSION['username'] = $row['username'];
+				 	 $row = $result->fetch_assoc();
 
-					 $connect->close();
-					 $result->free_result();
-					  echo true;
+					 if(password_verify($user_password, $row['password']))
+					 {
+						 $_SESSION['zalogowany'] = true;
+
+	           $_SESSION['emailLog'] = $row['email'];
+	           $_SESSION['id'] = $row['id'];
+	           $_SESSION['username'] = $row['username'];
+
+						 $connect->close();
+						 $result->free_result();
+						 echo true;
+					 }
+					 else
+					 {
+					 	echo 3; //wrong password
+					 }
 				}
 	      else
 	      {
-	           echo false;
+	           echo false; //wrong login
 	      }
  			}
 	}
