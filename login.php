@@ -11,17 +11,10 @@ if($connect->connect_errno!=0)
 }
 $user_login = $_POST["emailLog"];
 $user_password = $_POST["passwordLog"];
-
 $user_login = htmlentities($user_login, ENT_QUOTES, "UTF-8");
 
  if(isset($_POST["emailLog"]))
  {
-      $sql = "
-      SELECT * FROM users
-      WHERE email = '".$_POST["emailLog"]."'
-      AND password = '".$_POST["passwordLog"]."'
-      ";
-
       if($result = @$connect->query(
 				sprintf("SELECT * FROM users WHERE email='%s'",
 				mysqli_real_escape_string($connect,$user_login))))
@@ -30,14 +23,13 @@ $user_login = htmlentities($user_login, ENT_QUOTES, "UTF-8");
 				if($how_many_users > 0)
 				{
 				 	 $row = $result->fetch_assoc();
-
 					 if(password_verify($user_password, $row['password']))
 					 {
 						 $_SESSION['zalogowany'] = true;
-
 	           $_SESSION['emailLog'] = $row['email'];
 	           $_SESSION['id'] = $row['id'];
 	           $_SESSION['username'] = $row['username'];
+             $_SESSION['password'] = $row['password'];
 						 $result->free_result();
 						 echo true;
 					 }
