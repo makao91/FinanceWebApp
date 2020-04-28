@@ -16,6 +16,7 @@
 	<meta name="description" content="Opis strony" />
 	<meta name="keywords" content="slowa, klucze" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="css/bootstrap.min.css" >
 	<link rel="stylesheet" href="css/fontello.css" >
@@ -27,9 +28,9 @@
 <body>
 	<main>
 		<section>
-			<button type="button" class="btn btn-lg btn-warning btn-warning-inverse d-inline-block">Edytuj imię</button>
-			<button type="button" class="btn btn-lg btn-warning btn-warning-inverse d-inline-block">Edytuj e-mail</button>
-			<button type="button" class="btn btn-lg btn-warning btn-warning-inverse d-inline-block">Zmień hasło</button>
+			<button type="button" class="btn btn-lg btn-warning btn-warning-inverse d-inline-block" data-toggle="modal" data-target="#editing-name">Edytuj imię</button>
+			<button type="button" class="btn btn-lg btn-warning btn-warning-inverse d-inline-block" data-toggle="modal" data-target="#editing-email">Edytuj e-mail</button>
+			<button type="button" class="btn btn-lg btn-warning btn-warning-inverse d-inline-block" data-toggle="modal" data-target="#editing-pass">Zmień hasło</button>
 		</section>
 		<header>
 			<div class="row container mt-5">
@@ -328,24 +329,188 @@
 		</div>
 		</div>
 	</main>
-	<script>
-	$(document).ready(function(){
-			 $('#logout').click(function(){
-						var action = "logout";
-						$.ajax({
-								 url:"logout.php",
-								 method:"POST",
-								 data:{action:action},
-								 success:function()
-								 {
-											window.location = "index.php";
-								 }
-						});
-			 });
-	});
-	</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	<script src="js/bootstrap.min.js"></script>
-
 </body>
 </html>
+
+	<div class="modal fade" id="editing-name" tabindex="-1" role="dialog" aria-labelledby="zmianaImienia" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="panelLogowania">Zmień imię</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form id="edit-name-form" method="post">
+						<div class="form-group">
+						 <input type="text" placeholder="nowe imię" class="form-control" id="nameEdit" name="nameEdit" aria-describedby="zmieńImię"/>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="button" name="editNameButt" id="editNameButt" class="btn btn-primary btn-lg btn-block">Zmień</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="editing-email" tabindex="-1" role="dialog" aria-labelledby="zmianaEmaila" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="panelLogowania">Zmień email</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form id="edit-email-form" method="post">
+						<div class="form-group">
+						 <input type="email" placeholder="nowy email" class="form-control" id="emailEdit" name="emailEdit" aria-describedby="zmieńImię"/>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="button" name="editEmailButt" id="editEmailButt" class="btn btn-primary btn-lg btn-block">Zmień</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="editing-pass" tabindex="-1" role="dialog" aria-labelledby="zmianaHasła" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="panelLogowania">Zmień hasło</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form id="edit-pass-form" method="post">
+						<div class="form-group">
+						 <input type="password" placeholder="stare hasło" class="form-control" id="passOldEdit" name="passOldEdit" aria-describedby="zmieńStareHasło"/>
+						 <input type="password" placeholder="nowe hasło" class="form-control" id="passEdit" name="passEdit" aria-describedby="zmieńHasło"/>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="button" name="editPassButt" id="editPassButt" class="btn btn-primary btn-lg btn-block">Zmień</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+	$(document).ready(function(){
+			$('#logout').click(function(){
+					 var action = "logout";
+					 $.ajax({
+								url:"logout.php",
+								method:"POST",
+								data:{action:action},
+								success:function()
+								{
+										 window.location = "index.php";
+								}
+					 });
+			});
+			$('#editNameButt').click(function(){
+					 var nameEdit = $('#nameEdit').val();
+
+						if(nameEdit.length>=3 && nameEdit.length<=20)
+						{
+							 $.ajax({
+										 url:"edit-name.php",
+										 method:"POST",
+										 data: {nameEdit:nameEdit},
+										 success:function(data)
+										 {
+													if(data == true)
+													{
+															 alert("Operacja wykonana pomyślnie.");
+															 $('#editing-name').modal('hide');
+													}
+													else
+													{
+													 alert(data);
+													}
+										 }
+								});
+							}
+							else
+							{
+								alert("Imię musi mieć od 3 do 20 znaków.");
+							}
+					 });
+					 $('#editEmailButt').click(function(){
+		 					 var emailEdit = $('#emailEdit').val();
+		 							 $.ajax({
+		 										 url:"edit-email.php",
+		 										 method:"POST",
+		 										 data: {emailEdit:emailEdit},
+		 										 success:function(data)
+		 										 {
+		 													if(data == true)
+		 													{
+		 															 alert("Operacja wykonana pomyślnie.");
+		 															 $('#editing-email').modal('hide');
+		 													}
+															else if(data == false)
+															{
+																alert("Podano nieprawidłowy format email. Nie wolno stosować polskich znaków i znaków specjalnych. Przykładowy email: twoja@gmail.com.");
+															}
+		 													else
+		 													{
+		 													 alert(data);
+		 													}
+		 										 }
+		 								});
+		 					 });
+							 $('#editPassButt').click(function(){
+									 var passEdit = $('#passEdit').val();
+									 var passOldEdit = $('#passOldEdit').val();
+									 if(passEdit.length>=5 && passEdit.length<=20)
+									 {
+										 				 $.ajax({
+														 url:"edit-pass.php",
+														 method:"POST",
+														 data: {passEdit:passEdit, passOldEdit:passOldEdit},
+														 success:function(data)
+														 {
+																	if(data == true)
+																	{
+																			 alert("Operacja wykonana pomyślnie.");
+																			 $('#editing-pass').modal('hide');
+																	}
+																	else if(data == false)
+																	{
+																		alert("Wpisz poprawnie stare hasło");
+																	}
+																	else if(data == 1)
+																	{
+																		alert("Stare i nowe hasło nie mogą być takie same");
+																	}
+																	else
+																	{
+																	 alert(data);
+																	}
+														 }
+												});
+									 }
+									 else
+									 {
+									 	alert("Hasło musi zawierać od 5 do 20 znaków.");
+									 }
+
+								});
+	});
+
+	</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js"></script>

@@ -23,7 +23,6 @@
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Paaji+2:400,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css_style.css" type="text/css"/>
 	<script src="customjs.js"></script>
-
 </head>
 
 <body>
@@ -95,7 +94,7 @@
 				        </button>
 				      </div>
 				      <div class="modal-body">
-				        <form id="registration" method="post">
+				        <form id="registration-form" method="post">
 									<div class="form-group">
 								    <i class="icon-user float-left mr-1"></i><input type="text" placeholder="Imię" class="form-control" id="nameReg" name="nameReg" aria-describedby="imie"/>
 								  </div>
@@ -131,7 +130,7 @@
 								</button>
 							</div>
 							<div class="modal-body">
-								<form id="insert_form" method="post">
+								<form id="login-form" method="post">
 									<div class="form-group">
 										<i class="icon-mail float-left mr-1"></i> <input type="email" placeholder="E-mail" class="form-control" id="emailLog" name="emailLog" aria-describedby="emailLog"/>
 									</div>
@@ -184,7 +183,6 @@ $(document).ready(function(){
 							 alert("Oba pola są wymagane");
 					}
 		 });
-
 		 		 $('#reg-butt').click(function(event){
 					 event.preventDefault();
 					var nameReg = $('#nameReg').val();
@@ -215,7 +213,7 @@ $(document).ready(function(){
 												 }
 												 else if(data == 2)
 												 {
-													 alert("Podaj poprawny adres email.");
+													 alert("Podano nieprawidłowy format email. Nie wolno stosować polskich znaków i znaków specjalnych. Przykładowy email: twoja@gmail.com.");
 												 }
 												 else if (data == 3)
 												 {
