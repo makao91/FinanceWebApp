@@ -7,6 +7,7 @@
 if($connect->connect_errno!=0)
 {
 	echo "Error: ".$connect->connect_errno." Opis: ".$connect->connect_error;
+  exit();
 }
 $user_login = $_POST["emailLog"];
 $user_password = $_POST["passwordLog"];
@@ -37,8 +38,6 @@ $user_login = htmlentities($user_login, ENT_QUOTES, "UTF-8");
 	           $_SESSION['emailLog'] = $row['email'];
 	           $_SESSION['id'] = $row['id'];
 	           $_SESSION['username'] = $row['username'];
-
-						 $connect->close();
 						 $result->free_result();
 						 echo true;
 					 }
@@ -52,5 +51,9 @@ $user_login = htmlentities($user_login, ENT_QUOTES, "UTF-8");
 	           echo false; //wrong login
 	      }
  			}
+      else {
+        echo "Error: ".$connect->connect_errno." Opis: ".$connect->connect_error;
+      }
 	}
+  $connect->close();
  ?>
