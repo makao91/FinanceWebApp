@@ -392,7 +392,7 @@
 				<div class="modal-body">
 					<form id="edit-pass-form" method="post">
 						<div class="form-group">
-						 <input type="password" placeholder="stare hasło" class="form-control" id="passOldEdit" name="passOldEdit" aria-describedby="zmieńStareHasło"/>
+						 <input type="password" placeholder="stare hasło" class="form-control mb-2" id="passOldEdit" name="passOldEdit" aria-describedby="zmieńStareHasło"/>
 						 <input type="password" placeholder="nowe hasło" class="form-control" id="passEdit" name="passEdit" aria-describedby="zmieńHasło"/>
 						</div>
 						<div class="modal-footer">
@@ -433,6 +433,7 @@
 													if(data == true)
 													{
 															 alert("Operacja wykonana pomyślnie.");
+															 $('#nameEdit').val('');
 															 $('#editing-name').modal('hide');
 													}
 													else
@@ -458,6 +459,7 @@
 		 													if(data == true)
 		 													{
 		 															 alert("Operacja wykonana pomyślnie.");
+																	 $('#emailEdit').val('');
 		 															 $('#editing-email').modal('hide');
 		 													}
 															else if(data == false)
@@ -482,16 +484,18 @@
 														 data: {passEdit:passEdit, passOldEdit:passOldEdit},
 														 success:function(data)
 														 {
-																	if(data == true)
+																	if(data == 1)
 																	{
 																			 alert("Operacja wykonana pomyślnie.");
+																			 $('#passEdit').val('');
+																			 $('#passOldEdit').val('');
 																			 $('#editing-pass').modal('hide');
 																	}
-																	else if(data == false)
+																	else if(data == 2)
 																	{
 																		alert("Wpisz poprawnie stare hasło");
 																	}
-																	else if(data == 1)
+																	else if(data == 3)
 																	{
 																		alert("Stare i nowe hasło nie mogą być takie same");
 																	}
