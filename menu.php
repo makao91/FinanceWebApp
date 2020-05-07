@@ -50,171 +50,8 @@
 				<div class="container mt-5">
 					<div class="btn-group-vertical btn-block" role="group" aria-label="First group">
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addIncome">Dodaj przychód</button>
-						<div class="modal fade" id="addIncome" tabindex="-1" role="dialog" aria-labelledby="addIncome" aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="income">Nowy przychód</h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<form>
-											<div class="form-group">
-												<input type="number" step="0.01" placeholder="kwota" class="form-control" id="amountIN">
-											</div>
-											<div class="row width-100">
-												<div class="col-3">
-													<button type="button" onclick='currentDateYMD("dayTarget")' class="btn btn-info">Dzisiaj?</button>
-												</div>
-												<div class="col-6 ml-0">
-													<div class="form-group">
-														<input type="date" id="dayTarget">
-													</div>
-												</div>
-												<div class="col-3">
-													<button type="button" onclick='previousDateYMD("dayTarget")' class="btn btn-info">Wczoraj?</button>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-8">
-													<div class="input-group mb-3">
-														<div class="input-group-prepend">
-															<label class="input-group-text" for="inputGroupSelect01">Kategoria</label>
-														</div>
-														<select class="custom-select-md" id="inputGroupSelect01">
-															<option selected>wybierz...</option>
-															<option value="1">Wynagrodzenie</option>
-															<option value="2">Odsetki bankowe</option>
-															<option value="3">Sprzedaż na allegro</option>
-															<option value="4">Inne</option>
-														</select>
-													</div>
-												</div>
-												<div class="col-1.5">
-													<a href=""><p>[Dodaj]</p></a>
-												</div>
-												<div class="col-1.5">
-													<a href=""><p>[Usuń]</p></a>
-												</div>
-											</div>
-											<div class="form-group">
-												<textarea class="form-control" placeholder="Komentarz (opcjonalny)" id="commentIN" aria-label="With textarea"></textarea>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
-										<button type="button" class="btn btn-primary">Dodaj</button>
-									</div>
-								</div>
-							</div>
-						</div>
 						<button type="button" class="btn btn-danger btn-lg mt-1" data-toggle="modal" data-target="#addExpense">Dodaj wydatek</button>
-						<div class="modal fade" id="addExpense" tabindex="-1" role="dialog" aria-labelledby="addExpense" aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="expense">Nowy wydatek</h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<form>
-											<div class="row width-100 justify-content-center mb-3">
-												<div class="d-inline mx-3">
-													<div class="input-group">
-													  <div class="input-group-prepend">
-													    <div class="input-group-text">
-													      <input type="radio" checked aria-label="gotówka">Karta debetowa
-													    </div>
-													  </div>
-													</div>
-												</div>
-												<div class="d-inline mr-3">
-													<div class="input-group">
-														<div class="input-group-prepend">
-															<div class="input-group-text">
-																<input type="radio" aria-label="gotówka">Gotówka
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="d-inline mr-3">
-													<div class="input-group">
-														<div class="input-group-prepend">
-															<div class="input-group-text">
-																<input type="radio" aria-label="gotówka">Karta kredytowa
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="form-group">
-												<input type="number" step="0.01" placeholder="kwota" class="form-control" id="amountEX">
-											</div>
-											<div class="row width-100">
-												<div class="col-3">
-													<button type="button" onclick='currentDateYMD("dayTargetE")' class="btn btn-info">Dzisiaj?</button>
-												</div>
-												<div class="col-6 ml-0">
-													<div class="form-group">
-														<input type="date" id="dayTargetE">
-													</div>
-												</div>
-												<div class="col-3">
-													<button type="button" onclick='previousDateYMD("dayTargetE")' class="btn btn-info">Wczoraj?</button>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-8">
-													<div class="input-group mb-3">
-														<div class="input-group-prepend">
-															<label class="input-group-text" for="inputEX">Kategoria</label>
-														</div>
-														<select class="custom-select-md" id="inputEX">
-															<option selected>wybierz...</option>
-															<option value="1">Jedzenie</option>
-															<option value="2">Mieszkanie</option>
-															<option value="3">Transport</option>
-															<option value="4">Telekomunikacja</option>
-															<option value="5">Opieka zdrowotna</option>
-															<option value="6">Ubranie</option>
-															<option value="7">Higiena</option>
-															<option value="8">Dzieci</option>
-															<option value="9">Rozrywka</option>
-															<option value="10">Wycieczka</option>
-															<option value="11">Szkolenia</option>
-															<option value="12">Książki</option>
-															<option value="13">Oszczędności</option>
-															<option value="14">Emerytura</option>
-															<option value="15">Spłata długów</option>
-															<option value="16">Darowizna</option>
-															<option value="17">Inne wydatki</option>
-														</select>
-													</div>
-												</div>
-												<div class="col-1.5">
-													<a href=""><p>[Dodaj]</p></a>
-												</div>
-												<div class="col-1.5">
-													<a href=""><p>[Usuń]</p></a>
-												</div>
-											</div>
-											<div class="form-group">
-												<textarea class="form-control" placeholder="Komentarz (opcjonalny)" id="commentEX" aria-label="With textarea"></textarea>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
-										<button type="button" class="btn btn-primary">Dodaj</button>
-									</div>
-								</div>
-							</div>
-						</div>
+
 						<a href="balance.html"><button type="button" class="btn btn-success btn-lg mt-1">Przeglądaj bilans</button></a>
 						<button type="button" id="logout" name="logout" class="btn btn-secondary btn-lg mt-1">Wyloguj się</button>
 					</div>
@@ -236,7 +73,7 @@
 										<div class="modal-body">
 											<form>
 												<div class="form-group">
-													<input type="text" placeholder="nazwa nowej kategorii" class="form-control" id="catIN">
+													<input type="text" placeholder="nazwa nowej kategorii" class="form-control" id="catIN"/>
 												</div>
 											</form>
 										</div>
@@ -304,7 +141,7 @@
 										<div class="modal-body">
 											<form>
 												<div class="form-group">
-													<input type="text" placeholder="nazwa nowej kategorii" class="form-control" id="catEX">
+													<input type="text" placeholder="nazwa nowej kategorii" class="form-control" id="catEX"/>
 												</div>
 											</form>
 										</div>
@@ -405,6 +242,159 @@
 		</div>
 	</div>
 
+	<div class="modal fade" id="addIncome" tabindex="-1" role="dialog" aria-labelledby="addIncome" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="income">Nowy przychód</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<input type="number" step="0.01" placeholder="kwota" class="form-control" id="incomeAmount" name="incomeAmount"/>
+						</div>
+						<div class="row width-100">
+							<div class="col-3">
+								<button type="button" onclick='currentDateYMD("incomeDate")' class="btn btn-info">Dzisiaj?</button>
+							</div>
+							<div class="col-6 ml-0">
+								<div class="form-group">
+									<input type="date" id="incomeDate" name="incomeDate"/>
+								</div>
+							</div>
+							<div class="col-3">
+								<button type="button" onclick='previousDateYMD("incomeDate")' class="btn btn-info">Wczoraj?</button>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-8">
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="inputGroupSelect01">Kategoria</label>
+									</div>
+									<select class="custom-select-md" id="incomeCategory" name="incomeCategory">
+										<option selected>wybierz</option>
+										<option>Wypłata</option>
+										<option>Odsetki</option>
+										<option>Allegro</option>
+										<option>Inne</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<textarea class="form-control" placeholder="Komentarz (opcjonalny)" id="incomeComment" name="incomeComment" aria-label="With textarea"></textarea>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+					<button type="button" name="addIncomeBtn" id="addIncomeBtn" class="btn btn-primary">Dodaj</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="addExpense" tabindex="-1" role="dialog" aria-labelledby="addExpense" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="expense">Nowy wydatek</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="row width-100 justify-content-center mb-3">
+							<div class="d-inline mx-3">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<label class="mb-0"><input type="radio" class="payMethod" value="Karta debetowa" name="payMethod" checked aria-label="gotówka"/>Karta debetowa</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="d-inline mr-3">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<label class="mb-0"><input type="radio" class="payMethod" value="Gotówka" name="payMethod" aria-label="gotówka">Gotówka</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="d-inline mr-3">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<label class="mb-0"><input type="radio" class="payMethod" value="Karta kredytowa" name="payMethod" aria-label="gotówka"/>Karta kredytowa</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<input type="number" step="0.01" placeholder="kwota" class="form-control" id="expenseAmount" name="expenseAmount"/>
+						</div>
+						<div class="row width-100">
+							<div class="col-3">
+								<button type="button" onclick='currentDateYMD("expenseDate")' class="btn btn-info">Dzisiaj?</button>
+							</div>
+							<div class="col-6 ml-0">
+								<div class="form-group">
+									<input type="date" id="expenseDate" name="expenseDate"/>
+								</div>
+							</div>
+							<div class="col-3">
+								<button type="button" onclick='previousDateYMD("expenseDate")' class="btn btn-info">Wczoraj?</button>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-8">
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="inputEX">Kategoria</label>
+									</div>
+									<select class="custom-select-md" id="expenseCategory" name="expenseCategory">
+										<option selected>wybierz</option>
+										<option>Transport</option>
+										<option>Książki</option>
+										<option>Jedzenie</option>
+										<option>Czynsz</option>
+										<option>Telekomunikacja</option>
+										<option>Zdrowie</option>
+										<option>Ubrania</option>
+										<option>Higiena</option>
+										<option>Dzieci</option>
+										<option>Rekreacja</option>
+										<option>Wycieczki</option>
+										<option>Oszczędności</option>
+										<option>Na emke</option>
+										<option>Spłata długów</option>
+										<option>Prezent</option>
+										<option>Inne</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<textarea class="form-control" placeholder="Komentarz (opcjonalny)" id="expenseComment" name="expenseComment" aria-label="With textarea"></textarea>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+					<button type="button" id="addExpenseBtn" name="addExpenseBtn" class="btn btn-primary">Dodaj</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<script>
 	$(document).ready(function(){
 			$('#logout').click(function(){
@@ -448,7 +438,7 @@
 								alert("Imię musi mieć od 3 do 20 znaków.");
 							}
 					 });
-					 $('#editEmailButt').click(function(){
+			$('#editEmailButt').click(function(){
 		 					 var emailEdit = $('#emailEdit').val();
 		 							 $.ajax({
 		 										 url:"edit-email.php",
@@ -473,7 +463,7 @@
 		 										 }
 		 								});
 		 					 });
-							 $('#editPassButt').click(function(){
+			$('#editPassButt').click(function(){
 									 var passEdit = $('#passEdit').val();
 									 var passOldEdit = $('#passOldEdit').val();
 									 if(passEdit.length>=5 && passEdit.length<=20)
@@ -511,6 +501,71 @@
 									 	alert("Hasło musi zawierać od 5 do 20 znaków.");
 									 }
 
+								});
+			$('#addIncomeBtn').click(function(){
+									 var incomeAmount = $('#incomeAmount').val();
+									 var incomeDate = $('#incomeDate').val();
+									 var incomeCategory = $('#incomeCategory').val();
+									 var incomeComment = $('#incomeComment').val();
+
+										 				 $.ajax({
+														 url:"income.php",
+														 method:"POST",
+														 data: {incomeAmount:incomeAmount, incomeDate:incomeDate, incomeCategory:incomeCategory, incomeComment:incomeComment},
+														 success:function(data)
+														 {
+																	if(data == 1)
+																	{
+																			 alert("Wpisz kwotę.");
+																	}
+																	else if(data == 2)
+																	{
+																		alert("Wpisz datę");
+																	}
+																	else if(data == 3)
+																	{
+																		alert("Dodaj nową lub zaznacz kategorię Inny, jeżeli żadna ci nie odpowiada");
+																	}
+																	else if(data == 4)
+																	{
+																		alert("Dodano pomyślnie.")
+																		window.location = "menu.php";
+																	}
+														 }
+												});
+								});
+			$('#addExpenseBtn').click(function(){
+					 var payMethod = $('.payMethod:checked').val();
+					 var expenseAmount = $('#expenseAmount').val();
+					 var expenseDate = $('#expenseDate').val();
+					 var expenseCategory = $('#expenseCategory').val();
+					 var expenseComment = $('#expenseComment').val();
+					 alert(payMethod);
+			 				 $.ajax({
+							 url:"expense.php",
+							 method:"POST",
+							 data: {payMethod:payMethod, expenseAmount:expenseAmount, expenseDate:expenseDate, expenseCategory:expenseCategory, expenseComment:expenseComment},
+												 success:function(data)
+												 {alert(data);
+															if(data == 1)
+															{
+																	 alert("Wpisz kwotę.");
+															}
+															else if(data == 2)
+															{
+																alert("Wpisz datę");
+															}
+															else if(data == 3)
+															{
+																alert("Dodaj nową lub zaznacz kategorię Inny, jeżeli żadna ci nie odpowiada");
+															}
+															else if(data == 4)
+															{
+																alert("Dodano pomyślnie.")
+																window.location = "menu.php";
+															}
+												 }
+									});
 								});
 	});
 
