@@ -49,8 +49,7 @@ try
                 while($row = mysqli_fetch_array($result))
                 {
                   $catNameIn = $row['name'];
-                  $connect->query("INSERT INTO incomes_category_assigned_to_users (`user_id`, `name`)
-                                      VALUES ('$realID', '$catNameIn')");
+                  $connect->query("INSERT INTO incomes_category_assigned_to_users (`user_id`, `name`) VALUES ('$realID', '$catNameIn')");
                 }
               }
               else
@@ -64,7 +63,7 @@ try
                   {
                     $catNameEX = $row2['name'];
                     $connect->query("INSERT INTO expenses_category_assigned_to_users (`user_id`, `name`)
-                                        VALUES ('$realID', '$catNameEX')");
+                    VALUES ('$realID', '$catNameEX')");
                   }
                 }
                 else
@@ -77,14 +76,14 @@ try
                     while($row3 = mysqli_fetch_array($result3))
                     {
                       $payName = $row3['name'];
-                      $connect->query("INSERT INTO payment_methods_assigned_to_users (`user_id`, `name`)
-                                          VALUES ('$realID', '$payName')");
+                      $connect->query("INSERT INTO payment_methods_assigned_to_users (`user_id`, `name`) VALUES ('$realID', '$payName')");
                     }
                   }
                   else
                   {
                     throw new Exception($connect->error);
                   }
+              $isEmailExist->free_result();
               $result->free_result();
               $result2->free_result();
               $result3->free_result();
