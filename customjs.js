@@ -39,7 +39,7 @@ function currentDateY ()
 
 function previousDateYandM ()
 	{
-    document.getElementById("currDate").innerHTML = miesiac+"/"+rok;
+    document.getElementById("currDate").innerHTML = (miesiac-1)+"/"+rok;
 	}
 
 function uncommonDate ()

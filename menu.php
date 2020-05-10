@@ -18,11 +18,18 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src='select2/dist/js/select2.min.js'></script>
+
+
+
 	<link rel="stylesheet" href="css/bootstrap.min.css" >
 	<link rel="stylesheet" href="css/fontello.css" >
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Paaji+2:400,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css_style.css" type="text/css"/>
+	<link rel="stylesheet" href="select2/dist/css/select2.min.css" type="text/css"/>
 	<script src="customjs.js"></script>
+
+
 </head>
 
 <body>
@@ -273,14 +280,10 @@
 							<div class="col-8">
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
-										<label class="input-group-text" for="inputGroupSelect01">Kategoria</label>
+										<label class="input-group-text" style='height:28px' for="inputGroupSelect01">Kategoria</label>
 									</div>
-									<select class="custom-select-md" id="incomeCategory" name="incomeCategory">
-										<option selected>wybierz</option>
-										<option>Wypłata</option>
-										<option>Odsetki</option>
-										<option>Allegro</option>
-										<option>Inne</option>
+									<select class="custom-select-md" style='width: 140px;' id="incomeCategory" name="incomeCategory">
+										<option value="1">-- Wybierz --</option>
 									</select>
 								</div>
 							</div>
@@ -358,26 +361,10 @@
 							<div class="col-8">
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
-										<label class="input-group-text" for="inputEX">Kategoria</label>
+										<label class="input-group-text" style='height:28px;' for="inputEX">Kategoria</label>
 									</div>
-									<select class="custom-select-md" id="expenseCategory" name="expenseCategory">
-										<option selected>wybierz</option>
-										<option>Transport</option>
-										<option>Książki</option>
-										<option>Jedzenie</option>
-										<option>Czynsz</option>
-										<option>Telekomunikacja</option>
-										<option>Zdrowie</option>
-										<option>Ubrania</option>
-										<option>Higiena</option>
-										<option>Dzieci</option>
-										<option>Rekreacja</option>
-										<option>Wycieczki</option>
-										<option>Oszczędności</option>
-										<option>Na emke</option>
-										<option>Spłata długów</option>
-										<option>Prezent</option>
-										<option>Inne</option>
+									<select class="custom-select-md" style='width: 140px;' id="expenseCategory" name="expenseCategory">
+										<option value="1">-- Wybierz --</option>
 									</select>
 								</div>
 							</div>
@@ -546,7 +533,7 @@
 							 method:"POST",
 							 data: {payMethod:payMethod, expenseAmount:expenseAmount, expenseDate:expenseDate, expenseCategory:expenseCategory, expenseComment:expenseComment},
 												 success:function(data)
-												 {alert(data);
+												 {
 															if(data == 1)
 															{
 																	 alert("Wpisz kwotę.");
@@ -567,7 +554,45 @@
 												 }
 									});
 								});
-	});
+			$("#expenseCategory").select2({
+			       ajax: {
+			         url: "expenseCategory.php",
+			         type: "post",
+			         dataType: 'json',
+			         delay: 250,
+							 data: function (params) {
+                return {
+                  searchTerm: params.term // search term
+                };
+               },
+               processResults: function (response) {
+                 return {
+                    results: response
+                 };
+               },
+               cache: true
+              }
+             });
+			$("#incomeCategory").select2({
+ 						       ajax: {
+ 						         url: "incomeCategory.php",
+ 						         type: "post",
+ 						         dataType: 'json',
+ 						         delay: 250,
+ 										 data: function (params) {
+ 			                return {
+ 			                  searchTerm: params.term // search term
+ 			                };
+ 			               },
+ 			               processResults: function (response) {
+ 			                 return {
+ 			                    results: response
+ 			                 };
+ 			               },
+ 			               cache: true
+ 			              }
+ 			             });
+  });
 
 	</script>
 
