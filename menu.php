@@ -6,8 +6,9 @@
 		header('Location: index.php');
 		exit();
 	}
+	$_SESSION['dateFrom'] = date("Y-m-01");
+	$_SESSION['dateTo'] = date("Y-m-t");
  ?>
-
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -16,20 +17,16 @@
 	<meta name="description" content="Opis strony" />
 	<meta name="keywords" content="slowa, klucze" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src='select2/dist/js/select2.min.js'></script>
-
-
-
 	<link rel="stylesheet" href="css/bootstrap.min.css" >
 	<link rel="stylesheet" href="css/fontello.css" >
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Paaji+2:400,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css_style.css" type="text/css"/>
+	<link rel="stylesheet" href="css_menu.css" type="text/css"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src='select2/dist/js/select2.min.js'></script>
 	<link rel="stylesheet" href="select2/dist/css/select2.min.css" type="text/css"/>
 	<script src="customjs.js"></script>
-
-
 </head>
 
 <body>
@@ -45,7 +42,7 @@
 					<img class="mt-2" src="img/menu1.jpg" alt="balans1" style="width:100%;">
 				</div>
 				<div class="col-lg-4 text-center marginY">
-					<p class="menuM balanceTitle" >Menu główne</p>
+					<p class="menuM menuMain balanceTitle">Menu główne</p>
 				</div>
 				<div class="col-lg-4">
 					<img class="mt-2" src="img/menu2.jpg" alt="balans2" style="width:100%;">
@@ -59,7 +56,7 @@
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addIncome">Dodaj przychód</button>
 						<button type="button" class="btn btn-danger btn-lg mt-1" data-toggle="modal" data-target="#addExpense">Dodaj wydatek</button>
 
-						<a href="balance.html"><button type="button" class="btn btn-success btn-lg mt-1">Przeglądaj bilans</button></a>
+						<a href="balance.php"><button type="button" class="btn btn-success btn-lg mt-1">Przeglądaj bilans</button></a>
 						<button type="button" id="logout" name="logout" class="btn btn-secondary btn-lg mt-1">Wyloguj się</button>
 					</div>
 				</div>
@@ -494,13 +491,12 @@
 									 var incomeDate = $('#incomeDate').val();
 									 var incomeCategory = $('#incomeCategory').val();
 									 var incomeComment = $('#incomeComment').val();
-
 										 				 $.ajax({
 														 url:"income.php",
 														 method:"POST",
 														 data: {incomeAmount:incomeAmount, incomeDate:incomeDate, incomeCategory:incomeCategory, incomeComment:incomeComment},
 														 success:function(data)
-														 {
+														 {alert(data);
 																	if(data == 1)
 																	{
 																			 alert("Wpisz kwotę.");
@@ -515,7 +511,7 @@
 																	}
 																	else if(data == 4)
 																	{
-																		alert("Dodano pomyślnie.")
+																		alert("Dodano pomyślnie.");
 																		window.location = "menu.php";
 																	}
 														 }
@@ -527,7 +523,6 @@
 					 var expenseDate = $('#expenseDate').val();
 					 var expenseCategory = $('#expenseCategory').val();
 					 var expenseComment = $('#expenseComment').val();
-					 alert(payMethod);
 			 				 $.ajax({
 							 url:"expense.php",
 							 method:"POST",
@@ -593,7 +588,6 @@
  			              }
  			             });
   });
-
 	</script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
