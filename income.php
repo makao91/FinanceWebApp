@@ -17,20 +17,15 @@ try
   	throw new Exception(mysqli_connect_errno());
   }
 
-  if($incomeCategory!="wybierz")
+  if($incomeCategory!=1)
   {
-    $incomeCategoryIdSQLquerry = "SELECT id FROM incomes_category_assigned_to_users WHERE user_id = '$userID' AND name = '$incomeCategory'";
-    if($incomeCategoryId = $connect->query($incomeCategoryIdSQLquerry))
-      {
-        $rowIdCategory = $incomeCategoryId->fetch_assoc();
-        $realIdCategory = $rowIdCategory['id'];
         if($incomeDate!=0)
           {
             if($incomeAmount!=0)
               {
                 $sqlIncome = "
                 INSERT INTO incomes (user_id, income_category_assigned_to_user_id, amount, date_of_income, income_comment)
-                VALUES ('$userID', '$realIdCategory', '$incomeAmount', '$incomeDate', '$incomeComment')";
+                VALUES ('$userID', '$incomeCategory', '$incomeAmount', '$incomeDate', '$incomeComment')";
                 if($connect->query($sqlIncome))
                 {
                   echo 4;
@@ -49,12 +44,6 @@ try
         {
           echo 2;
         }
-        $incomeCategoryId->free_result();
-      }
-    else
-      {
-        throw new Exception($connect->error);
-      }
   }
   else
   {

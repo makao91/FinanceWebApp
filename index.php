@@ -30,6 +30,7 @@
 		<header>
 			<div class="containerLogo my-5 p-">
 				<h1 class="elegantShadow">Reign of money</h1>
+				<audio autoplay loop src="music.mp3">Play music</audio>
 			</div>
 
 		</header>
