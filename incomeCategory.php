@@ -26,10 +26,8 @@ try
   {
     $data[] = array('id'=>$row['id'], 'text'=>$row['name']);
   }
-
   $fetchData->free_result();
   echo json_encode($data);
-
 }
 catch (Exception $e)
 {

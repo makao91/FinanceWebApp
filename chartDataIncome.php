@@ -1,6 +1,5 @@
 <?php
 header('Content-Type: application/json');
-
 session_start();
 
 $userID = $_SESSION['id'];
@@ -14,9 +13,7 @@ try
   {
   	throw new Exception(mysqli_connect_errno());
   }
-
-  $sqlQuery = "SELECT * FROM incomes WHERE user_id = '$userID' AND date_of_income >= '$dateFrom' AND date_of_income <= '$dateTo'";
-
+  $sqlQuery = "SELECT income_category_assigned_to_user_id, SUM(amount) FROM incomes WHERE user_id = '$userID' AND date_of_income >= '$dateFrom' AND date_of_income <= '$dateTo' GROUP BY income_category_assigned_to_user_id";
   $result = mysqli_query($conn,$sqlQuery);
 
   $data = array();
@@ -26,16 +23,15 @@ try
 		$catNameQueryIn = "SELECT name FROM incomes_category_assigned_to_users WHERE id = '$categoryIdIncome'";
 		$incomeCategoryNameSQLquerry = $conn->query($catNameQueryIn);
 		$rowCatIn = $incomeCategoryNameSQLquerry->fetch_assoc();
-  	$data[] = array('name'=>$rowCatIn['name'], 'amount'=>$row['amount']);
+  	$data[] = array('name'=>$rowCatIn['name'], 'amount'=>$row['SUM(amount)']);
   }
-
+  $result->free_result();
+  $incomeCategoryNameSQLquerry->free_result();
   mysqli_close($conn);
-
   echo json_encode($data);
 }
 catch (Exception $e)
 {
   echo 'Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie. Informacja deweloperska: '.$e;
 }
-
 ?>

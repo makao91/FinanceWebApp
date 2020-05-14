@@ -18,21 +18,21 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="css/bootstrap.min.css" >
 	<link rel="stylesheet" href="css/fontello.css" >
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Paaji+2:400,700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="css_style.css" type="text/css"/>
-	<script src="customjs.js"></script>
+	<link rel="stylesheet" href="css/css_style.css" type="text/css"/>
 </head>
 
 <body>
+<audio preload="auto" autoplay loop src="sound/music.mp3">Play music</audio>
 	<main>
 		<header>
 			<div class="containerLogo my-5 p-">
 				<h1 class="elegantShadow">Reign of money</h1>
-				<audio autoplay loop src="music.mp3">Play music</audio>
 			</div>
-
 		</header>
 		<div class="container text-center my-5">
 			<div class="row">
@@ -73,7 +73,6 @@
 				  </a>
 				</div>
 			</div>
-
 			<div class="col-lg-4">
 				<p>Przed tobą aplikacja, która pomoże zawładnąć twoimi finansami.</p>
 				<p class="h4">Bądź świadom, na co przeznaczasz swoje pieniądze!</p>
@@ -85,68 +84,69 @@
 </main>
 </body>
 </html>
-				<div class="modal fade" id="registrating" tabindex="-1" role="dialog" aria-labelledby="panelRejestracji" aria-hidden="true">
-				  <div class="modal-dialog">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <h5 class="modal-title" id="panelRejestracji">Panel rejestracji</h5>
-				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				          <span aria-hidden="true">&times;</span>
-				        </button>
-				      </div>
-				      <div class="modal-body">
-				        <form id="registration-form" method="post">
-									<div class="form-group">
-								    <i class="icon-user float-left mr-1"></i><input type="text" placeholder="Imię" class="form-control" id="nameReg" name="nameReg" aria-describedby="imie"/>
-								  </div>
-									<div class="form-group">
-								   <i class="icon-mail float-left mr-1"></i> <input type="email" placeholder="E-mail" class="form-control" name="emailReg" id="emailReg" aria-describedby="email"/>
-								  </div>
-								  <div class="form-group">
-								   <i class="icon-lock float-left mr-1"></i> <input type="password" placeholder="Hasło" class="form-control" id="passwordReg" name="passwordReg"/>
-								  </div>
-									<div class="form-group">
-								    <i class="icon-lock-circled float-left mr-1"></i><input type="password" placeholder="Powtórz hasło" class="form-control form-control-sm" id="passwordReg2" name="passwordReg2"/>
-								  </div>
-									<div class="modal-footer">
-										<label class="regulamin">
-											<input  class="m-1" type="checkbox" name="statute" id="statute">Akceptuję regulamin</input>
-										</label>
-										<button type="submit" name="reg-butt" id="reg-butt" class="btn btn-primary btn-lg btn-block">Zarejestruj się</button>
-									</div>
-									</div>
-				        </form>
-				      </div>
-				    </div>
-				  </div>
-				</div>
 
-				<div class="modal fade" id="logging" tabindex="-1" role="dialog" aria-labelledby="panelLogowania" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="panelLogowania">Panel logowania</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<form id="login-form" method="post">
-									<div class="form-group">
-										<i class="icon-mail float-left mr-1"></i> <input type="email" placeholder="E-mail" class="form-control" id="emailLog" name="emailLog" aria-describedby="emailLog"/>
-									</div>
-									<div class="form-group">
-									<i class="icon-lock float-left mr-1"></i>	<input type="password" placeholder="Hasło" class="form-control" id="passwordLog" name="passwordLog"/>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-										<button type="button" name="log-butt" id="log-butt" class="btn btn-primary btn-lg btn-block">Zaloguj się</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
+<div class="modal fade" id="registrating" tabindex="-1" role="dialog" aria-labelledby="panelRejestracji" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="panelRejestracji">Panel rejestracji</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form id="registration-form" method="post">
+				<div class="form-group">
+			    <i class="icon-user float-left mr-1"></i><input type="text" placeholder="Imię" class="form-control" id="nameReg" name="nameReg" aria-describedby="imie"/>
+			  </div>
+				<div class="form-group">
+			   <i class="icon-mail float-left mr-1"></i> <input type="email" placeholder="E-mail" class="form-control" name="emailReg" id="emailReg" aria-describedby="email"/>
+			  </div>
+			  <div class="form-group">
+			   <i class="icon-lock float-left mr-1"></i> <input type="password" placeholder="Hasło" class="form-control" id="passwordReg" name="passwordReg"/>
+			  </div>
+				<div class="form-group">
+			    <i class="icon-lock-circled float-left mr-1"></i><input type="password" placeholder="Powtórz hasło" class="form-control form-control-sm" id="passwordReg2" name="passwordReg2"/>
+			  </div>
+				<div class="modal-footer">
+					<label class="regulamin">
+						<input  class="m-1" type="checkbox" name="statute" id="statute">Akceptuję regulamin</input>
+					</label>
+					<button type="submit" name="reg-butt" id="reg-butt" class="btn btn-primary btn-lg btn-block">Zarejestruj się</button>
 				</div>
+				</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="logging" tabindex="-1" role="dialog" aria-labelledby="panelLogowania" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="panelLogowania">Panel logowania</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form id="login-form" method="post">
+					<div class="form-group">
+						<i class="icon-mail float-left mr-1"></i> <input type="email" placeholder="E-mail" class="form-control" id="emailLog" name="emailLog" aria-describedby="emailLog"/>
+					</div>
+					<div class="form-group">
+					<i class="icon-lock float-left mr-1"></i>	<input type="password" placeholder="Hasło" class="form-control" id="passwordLog" name="passwordLog"/>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" name="log-butt" id="log-butt" class="btn btn-primary btn-lg btn-block">Zaloguj się</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script>
 $(document).ready(function(){
 		 $('#log-butt').click(function(){
@@ -184,14 +184,13 @@ $(document).ready(function(){
 							 alert("Oba pola są wymagane");
 					}
 		 });
-		 		 $('#reg-butt').click(function(event){
+		 $('#reg-butt').click(function(event){
 					 event.preventDefault();
 					var nameReg = $('#nameReg').val();
 					var emailReg = $('#emailReg').val();
 					var passwordReg = $('#passwordReg').val();
 					var passwordReg2 = $('#passwordReg2').val();
 					var statute = document.getElementById('statute');
-
 					if(emailReg != '' && passwordReg != '' && passwordReg2 != '' && nameReg != '')
 					{
 						if(passwordReg==passwordReg2)
@@ -207,7 +206,7 @@ $(document).ready(function(){
 										method:"POST",
 										data: {nameReg:nameReg, emailReg:emailReg, passwordReg:passwordReg, passwordReg2:passwordReg2},
 										success:function(data)
-										{//alert(data);
+										{
 												 if(data == 1)
 												 {
 															alert("Uzytkownik o wskazanym adresie email już istnieje. Spróbuj się zalogować lub wprowadzić inny adres email.");
@@ -255,8 +254,4 @@ $(document).ready(function(){
 		 });
 
 });
-
 </script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="js/bootstrap.min.js"></script>

@@ -1,9 +1,9 @@
 body
 {
-	background: url(img/back.jpg) center center ;
+	background: url(../img/back.jpg) center center ;
 	background-color: cover;
 	color: #b38600;
-	font-size: 1.25rem;
+	font-size: 1.15rem;
 	width: 100vw;
 	height: 100vh;
 	font-family: 'Baloo Paaji 2', cursive;
@@ -20,7 +20,6 @@ img
 {
 	margin-top: 0.7rem;
 }
-
 .container
 {
 	margin-left: auto;
@@ -137,7 +136,8 @@ a:hover
 	letter-spacing: 5px;
 	font-size: 20px;
 }
-h1 {
+h1
+{
   font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
   font-size: 92px;
   padding: 50px 50px;
@@ -145,7 +145,8 @@ h1 {
   text-transform: uppercase;
   text-rendering: optimizeLegibility;
 }
-.elegantShadow {
+.elegantShadow
+{
     color: #131313;
     background-color: #fff0b3;
     letter-spacing: .15em;
@@ -180,14 +181,14 @@ h1 {
       -27px 54px 1px #e2e0df,
       -28px 56px 1px #e4e3e2;
   }
-	.stickyL
-	{
-		width: 100%;
-		position: fixed;
-		left: 0;
-		top: 0;
-		z-index: 100;
-	}
+.stickyL
+{
+width: 100%;
+position: fixed;
+left: 0;
+top: 0;
+z-index: 100;
+}
 .containerRight
 {
 background-color:#ffb3b3;
@@ -254,10 +255,4 @@ width: 300px;
 
 	color: black;
 	cursor: pointer;
-}
-canvas{
-
-  width:1000px !important;
-  height:600px !important;
-
 }

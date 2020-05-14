@@ -17,16 +17,17 @@
 	<meta name="description" content="Opis strony" />
 	<meta name="keywords" content="slowa, klucze" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<link rel="stylesheet" href="css/bootstrap.min.css" >
-	<link rel="stylesheet" href="css/fontello.css" >
-	<link href="https://fonts.googleapis.com/css?family=Baloo+Paaji+2:400,700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="css_style.css" type="text/css"/>
-	<link rel="stylesheet" href="css_menu.css" type="text/css"/>
 
+	<link rel="stylesheet" href="css/bootstrap.min.css" >
+	<link href="https://fonts.googleapis.com/css?family=Baloo+Paaji+2:400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/css_style.css" type="text/css"/>
+	<link rel="stylesheet" href="css/css_menu.css" type="text/css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src='select2/dist/js/select2.min.js'></script>
 	<link rel="stylesheet" href="select2/dist/css/select2.min.css" type="text/css"/>
-	<script src="customjs.js"></script>
+	<script src="js/customjs.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -55,7 +56,6 @@
 					<div class="btn-group-vertical btn-block" role="group" aria-label="First group">
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addIncome">Dodaj przychód</button>
 						<button type="button" class="btn btn-danger btn-lg mt-1" data-toggle="modal" data-target="#addExpense">Dodaj wydatek</button>
-
 						<a href="balance.php"><button type="button" class="btn btn-success btn-lg mt-1">Przeglądaj bilans</button></a>
 						<button type="button" id="logout" name="logout" class="btn btn-secondary btn-lg mt-1">Wyloguj się</button>
 					</div>
@@ -173,211 +173,211 @@
 </body>
 </html>
 
-	<div class="modal fade" id="editing-name" tabindex="-1" role="dialog" aria-labelledby="zmianaImienia" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="panelLogowania">Zmień imię</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form id="edit-name-form" method="post">
-						<div class="form-group">
-						 <input type="text" placeholder="nowe imię" class="form-control" id="nameEdit" name="nameEdit" aria-describedby="zmieńImię"/>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<button type="button" name="editNameButt" id="editNameButt" class="btn btn-primary btn-lg btn-block">Zmień</button>
-						</div>
-					</form>
-				</div>
+<div class="modal fade" id="editing-name" tabindex="-1" role="dialog" aria-labelledby="zmianaImienia" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="panelLogowania">Zmień imię</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form id="edit-name-form" method="post">
+					<div class="form-group">
+					 <input type="text" placeholder="nowe imię" class="form-control" id="nameEdit" name="nameEdit" aria-describedby="zmieńImię"/>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" name="editNameButt" id="editNameButt" class="btn btn-primary btn-lg btn-block">Zmień</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="modal fade" id="editing-email" tabindex="-1" role="dialog" aria-labelledby="zmianaEmaila" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="panelLogowania">Zmień email</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form id="edit-email-form" method="post">
-						<div class="form-group">
-						 <input type="email" placeholder="nowy email" class="form-control" id="emailEdit" name="emailEdit" aria-describedby="zmieńImię"/>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<button type="button" name="editEmailButt" id="editEmailButt" class="btn btn-primary btn-lg btn-block">Zmień</button>
-						</div>
-					</form>
-				</div>
+<div class="modal fade" id="editing-email" tabindex="-1" role="dialog" aria-labelledby="zmianaEmaila" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="panelLogowania">Zmień email</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form id="edit-email-form" method="post">
+					<div class="form-group">
+					 <input type="email" placeholder="nowy email" class="form-control" id="emailEdit" name="emailEdit" aria-describedby="zmieńImię"/>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" name="editEmailButt" id="editEmailButt" class="btn btn-primary btn-lg btn-block">Zmień</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="modal fade" id="editing-pass" tabindex="-1" role="dialog" aria-labelledby="zmianaHasła" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="panelLogowania">Zmień hasło</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form id="edit-pass-form" method="post">
-						<div class="form-group">
-						 <input type="password" placeholder="stare hasło" class="form-control mb-2" id="passOldEdit" name="passOldEdit" aria-describedby="zmieńStareHasło"/>
-						 <input type="password" placeholder="nowe hasło" class="form-control" id="passEdit" name="passEdit" aria-describedby="zmieńHasło"/>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<button type="button" name="editPassButt" id="editPassButt" class="btn btn-primary btn-lg btn-block">Zmień</button>
-						</div>
-					</form>
-				</div>
+<div class="modal fade" id="editing-pass" tabindex="-1" role="dialog" aria-labelledby="zmianaHasła" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="panelLogowania">Zmień hasło</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form id="edit-pass-form" method="post">
+					<div class="form-group">
+					 <input type="password" placeholder="stare hasło" class="form-control mb-2" id="passOldEdit" name="passOldEdit" aria-describedby="zmieńStareHasło"/>
+					 <input type="password" placeholder="nowe hasło" class="form-control" id="passEdit" name="passEdit" aria-describedby="zmieńHasło"/>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" name="editPassButt" id="editPassButt" class="btn btn-primary btn-lg btn-block">Zmień</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="modal fade" id="addIncome" tabindex="-1" role="dialog" aria-labelledby="addIncome" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="income">Nowy przychód</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form>
-						<div class="form-group">
-							<input type="number" step="0.01" placeholder="kwota" class="form-control" id="incomeAmount" name="incomeAmount"/>
+<div class="modal fade" id="addIncome" tabindex="-1" role="dialog" aria-labelledby="addIncome" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="income">Nowy przychód</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<input type="number" step="0.01" placeholder="kwota" class="form-control" id="incomeAmount" name="incomeAmount"/>
+					</div>
+					<div class="row width-100">
+						<div class="col-3">
+							<button type="button" onclick='currentDateYMD("incomeDate")' class="btn btn-info">Dzisiaj?</button>
 						</div>
-						<div class="row width-100">
-							<div class="col-3">
-								<button type="button" onclick='currentDateYMD("incomeDate")' class="btn btn-info">Dzisiaj?</button>
+						<div class="col-6 ml-0">
+							<div class="form-group">
+								<input type="date" id="incomeDate" name="incomeDate"/>
 							</div>
-							<div class="col-6 ml-0">
-								<div class="form-group">
-									<input type="date" id="incomeDate" name="incomeDate"/>
+						</div>
+						<div class="col-3">
+							<button type="button" onclick='previousDateYMD("incomeDate")' class="btn btn-info">Wczoraj?</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-8">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<label class="input-group-text" style='height:28px' for="inputGroupSelect01">Kategoria</label>
 								</div>
-							</div>
-							<div class="col-3">
-								<button type="button" onclick='previousDateYMD("incomeDate")' class="btn btn-info">Wczoraj?</button>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-8">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<label class="input-group-text" style='height:28px' for="inputGroupSelect01">Kategoria</label>
-									</div>
-									<select class="custom-select-md" style='width: 140px;' id="incomeCategory" name="incomeCategory">
-										<option value="1">-- Wybierz --</option>
-									</select>
-								</div>
+								<select class="custom-select-md" style='width: 140px;' id="incomeCategory" name="incomeCategory">
+									<option value="1">-- Wybierz --</option>
+								</select>
 							</div>
 						</div>
-						<div class="form-group">
-							<textarea class="form-control" placeholder="Komentarz (opcjonalny)" id="incomeComment" name="incomeComment" aria-label="With textarea"></textarea>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
-					<button type="button" name="addIncomeBtn" id="addIncomeBtn" class="btn btn-primary">Dodaj</button>
-				</div>
+					</div>
+					<div class="form-group">
+						<textarea class="form-control" placeholder="Komentarz (opcjonalny)" id="incomeComment" name="incomeComment" aria-label="With textarea"></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+				<button type="button" name="addIncomeBtn" id="addIncomeBtn" class="btn btn-primary">Dodaj</button>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="modal fade" id="addExpense" tabindex="-1" role="dialog" aria-labelledby="addExpense" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="expense">Nowy wydatek</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form>
-						<div class="row width-100 justify-content-center mb-3">
-							<div class="d-inline mx-3">
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<div class="input-group-text">
-											<label class="mb-0"><input type="radio" class="payMethod" value="Karta debetowa" name="payMethod" checked aria-label="gotówka"/>Karta debetowa</label>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="d-inline mr-3">
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<div class="input-group-text">
-											<label class="mb-0"><input type="radio" class="payMethod" value="Gotówka" name="payMethod" aria-label="gotówka">Gotówka</label>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="d-inline mr-3">
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<div class="input-group-text">
-											<label class="mb-0"><input type="radio" class="payMethod" value="Karta kredytowa" name="payMethod" aria-label="gotówka"/>Karta kredytowa</label>
-										</div>
+<div class="modal fade" id="addExpense" tabindex="-1" role="dialog" aria-labelledby="addExpense" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="expense">Nowy wydatek</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="row width-100 justify-content-center mb-3">
+						<div class="d-inline mx-3">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<label class="mb-0"><input type="radio" class="payMethod" value="Karta debetowa" name="payMethod" checked aria-label="gotówka"/>Karta debetowa</label>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="form-group">
-							<input type="number" step="0.01" placeholder="kwota" class="form-control" id="expenseAmount" name="expenseAmount"/>
-						</div>
-						<div class="row width-100">
-							<div class="col-3">
-								<button type="button" onclick='currentDateYMD("expenseDate")' class="btn btn-info">Dzisiaj?</button>
-							</div>
-							<div class="col-6 ml-0">
-								<div class="form-group">
-									<input type="date" id="expenseDate" name="expenseDate"/>
-								</div>
-							</div>
-							<div class="col-3">
-								<button type="button" onclick='previousDateYMD("expenseDate")' class="btn btn-info">Wczoraj?</button>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-8">
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<label class="input-group-text" style='height:28px;' for="inputEX">Kategoria</label>
+						<div class="d-inline mr-3">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<label class="mb-0"><input type="radio" class="payMethod" value="Gotówka" name="payMethod" aria-label="gotówka">Gotówka</label>
 									</div>
-									<select class="custom-select-md" style='width: 140px;' id="expenseCategory" name="expenseCategory">
-										<option value="1">-- Wybierz --</option>
-									</select>
 								</div>
 							</div>
 						</div>
-						<div class="form-group">
-							<textarea class="form-control" placeholder="Komentarz (opcjonalny)" id="expenseComment" name="expenseComment" aria-label="With textarea"></textarea>
+						<div class="d-inline mr-3">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<label class="mb-0"><input type="radio" class="payMethod" value="Karta kredytowa" name="payMethod" aria-label="gotówka"/>Karta kredytowa</label>
+									</div>
+								</div>
+							</div>
 						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
-					<button type="button" id="addExpenseBtn" name="addExpenseBtn" class="btn btn-primary">Dodaj</button>
-				</div>
+					</div>
+					<div class="form-group">
+						<input type="number" step="0.01" placeholder="kwota" class="form-control" id="expenseAmount" name="expenseAmount"/>
+					</div>
+					<div class="row width-100">
+						<div class="col-3">
+							<button type="button" onclick='currentDateYMD("expenseDate")' class="btn btn-info">Dzisiaj?</button>
+						</div>
+						<div class="col-6 ml-0">
+							<div class="form-group">
+								<input type="date" id="expenseDate" name="expenseDate"/>
+							</div>
+						</div>
+						<div class="col-3">
+							<button type="button" onclick='previousDateYMD("expenseDate")' class="btn btn-info">Wczoraj?</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-8">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<label class="input-group-text" style='height:28px;' for="inputEX">Kategoria</label>
+								</div>
+								<select class="custom-select-md" style='width: 140px;' id="expenseCategory" name="expenseCategory">
+									<option value="1">-- Wybierz --</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<textarea class="form-control" placeholder="Komentarz (opcjonalny)" id="expenseComment" name="expenseComment" aria-label="With textarea"></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+				<button type="button" id="addExpenseBtn" name="addExpenseBtn" class="btn btn-primary">Dodaj</button>
 			</div>
 		</div>
 	</div>
+</div>
 
 	<script>
 	$(document).ready(function(){
@@ -395,7 +395,6 @@
 			});
 			$('#editNameButt').click(function(){
 					 var nameEdit = $('#nameEdit').val();
-
 						if(nameEdit.length>=3 && nameEdit.length<=20)
 						{
 							 $.ajax({
@@ -484,7 +483,6 @@
 									 {
 									 	alert("Hasło musi zawierać od 5 do 20 znaków.");
 									 }
-
 								});
 			$('#addIncomeBtn').click(function(){
 									 var incomeAmount = $('#incomeAmount').val();
@@ -589,6 +587,3 @@
  			             });
   });
 	</script>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	<script src="js/bootstrap.min.js"></script>

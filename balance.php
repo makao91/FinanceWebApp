@@ -36,10 +36,13 @@
 
 	<link rel="stylesheet" href="css/bootstrap.min.css" >
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Paaji+2:400,700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="css_style.css" type="text/css"/>
+	<link rel="stylesheet" href="css/css_style.css" type="text/css"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" type="text/css"/>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="customjs.js"></script>
 
 </head>
 <body>
@@ -62,13 +65,13 @@
 		</header>
 		<section>
 			<div class="container mt-0 mb-3">
-				<div class="row ">
-					<div class="col-4 marginY text-center">
-						<p class="balanceTitleDate  ">Wybierz okres:</p>
+				<div class="row" style="border: dashed 3px #b38600;">
+					<div class="col-lg-6 text-center">
+						<p class="balanceTitleDate my-0">Wybierz okres:</p>
 					</div>
-					<div class="col-4">
+					<div class="col-lg-6">
 						<div class="dropdown">
-						  <button class="btn btn-info btn-block btn-lg dropdown-toggle mt-1" type="button" id="dateFromToWorkWith" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						  <button class="btn btn-info btn-block btn-lg dropdown-toggle mt-2 mb-1" type="button" id="dateFromToWorkWith" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<?php
 									echo $_SESSION['dateFrom'].' do '.$_SESSION['dateTo'];
 								 ?>
@@ -95,68 +98,64 @@
 					</div>
 				</div>
 				<div id="showResult">
+					<div class="row justify-content-start">
+						<div class="col-xl-6">
+							<div class="chart-cnt">
+								<canvas id="myChart2" width="600" height="200"></canvas>
+							</div>
+						</div>
+						<div class="col-xl-6">
+							<div class="chart-cnt">
+								<canvas id="myChart" width="600" height="200"></canvas>
+							</div>
+						</div>
+					</div>
 				<div class="row justify-content-start">
-					<div class="col-md-3">
-						<table>
-							<tr><td colspan=2>Podsumowanie przychodów:</td></tr>
+					<div class="col-lg-3">
+						<table style=width:100%;>
+							<tr style="font-weight:bold;"><td colspan=2>Podsumowanie przychodów:</td></tr>
 <?php
-	$fetchIncome = mysqli_query($connect, "SELECT * FROM incomes WHERE user_id = '$userID' AND date_of_income >= '$dateFrom' AND date_of_income <= '$dateTo'");
+	$fetchIncome = mysqli_query($connect, "SELECT income_category_assigned_to_user_id, SUM(amount) FROM incomes WHERE user_id = '$userID' AND date_of_income >= '$dateFrom' AND date_of_income <= '$dateTo' GROUP BY income_category_assigned_to_user_id");
 	while ($rowIncome = mysqli_fetch_array($fetchIncome))
 	{
-		$summIncome+=$rowIncome["amount"];
+		$summIncome+=$rowIncome["SUM(amount)"];
 		$categoryIdIncome = $rowIncome["income_category_assigned_to_user_id"];
 		$catNameQueryIn = "SELECT name FROM incomes_category_assigned_to_users WHERE id = '$categoryIdIncome'";
-
-
 		$incomeCategoryNameSQLquerry = $connect->query($catNameQueryIn);
 		$rowCatIn = $incomeCategoryNameSQLquerry->fetch_assoc();
-		echo '<tr><td>'.$rowCatIn['name'].'</td><td>'.$rowIncome["amount"].' zł'.'</td></tr>';
+		echo '<tr><td>'.$rowCatIn['name'].'</td><td>'.$rowIncome["SUM(amount)"].' zł'.'</td></tr>';
 		$incomeCategoryNameSQLquerry->free_result();
 	}
 	$fetchIncome->free_result();
-
 ?>
 						</table>
 					</div>
-					<div class="col-md-3">
-						<table>
-							<tr><td colspan=2>Podsumowanie wydatków:</td></tr>
+					<div class="col-lg-3">
+						<table style=width:100%;>
+							<tr style="font-weight:bold;"><td colspan=2>Podsumowanie wydatków:</td></tr>
 <?php
-	$fetchExpense = mysqli_query($connect, "SELECT * FROM expenses WHERE user_id = '$userID' AND date_of_expense >= '$dateFrom' AND date_of_expense <= '$dateTo'");
+	$fetchExpense = mysqli_query($connect, "SELECT expense_category_assigned_to_user_id, SUM(amount) FROM expenses WHERE user_id = '$userID' AND date_of_expense >= '$dateFrom' AND date_of_expense <= '$dateTo' GROUP BY expense_category_assigned_to_user_id");
 	while ($rowExpense = mysqli_fetch_array($fetchExpense))
 	{
-		$summExpense+=$rowExpense["amount"];
+		$summExpense+=$rowExpense["SUM(amount)"];
 		$categoryIdExpense = $rowExpense["expense_category_assigned_to_user_id"];
 		$catNameQueryEx = "SELECT name FROM expenses_category_assigned_to_users WHERE id = '$categoryIdExpense'";
 		$expenseCategoryNameSQLquerry = $connect->query($catNameQueryEx);
 		$rowCatEx = $expenseCategoryNameSQLquerry->fetch_assoc();
-		echo '<tr><td>'.$rowCatEx['name'].'</td><td>'.$rowExpense["amount"].' zł'.'</td></tr>';
+		echo '<tr><td>'.$rowCatEx['name'].'</td><td>'.$rowExpense["SUM(amount)"].' zł'.'</td></tr>';
 		$expenseCategoryNameSQLquerry->free_result();
 	}
 	$connect->close();
 	$fetchExpense->free_result();
-
 ?>
 						</table>
 					</div>
-					<div class="col-6 text-center">
-						<span class="h1">PODSUMOWANIE</span>
+					<div class="col-lg-6 text-center">
+						<span style="font-weight:bold;" class="h1">PODSUMOWANIE</span>
 						<p class="h5">Wydatki: <?php echo $summExpense.' zł';?></p>
 						<p class="h5">Przychody: <?php echo $summIncome.' zł';?></p>
 						<p class="h3">SALDO</p>
 						<p><?php echo $summIncome-$summExpense.' zł';?></p>
-					</div>
-				</div>
-				<div class="row justify-content-start">
-					<div class="col-md-6">
-						<div class="chart-cnt">
-            	<canvas id="myChart" width="600" height="200"></canvas>
-        		</div>
-					</div>
-					<div class="col-md-6">
-						<div class="chart-cnt">
-							<canvas id="myChart2" width="600" height="200"></canvas>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -239,19 +238,16 @@ $(document).ready(function(){
 function showGraphEx()
 {
     {
-        $.post("chartData.php",
+        $.post("chartDataExpense.php",
         function (data)
         {
             console.log(data);
              var name = [];
             var amount = [];
-
             for (var i in data) {
-
                 name.push(data[i].name);
                 amount.push(data[i].amount);
             }
-
             var chartdata = {
                 labels: name,
                 datasets: [
@@ -262,11 +258,8 @@ function showGraphEx()
                         data: amount
                     }
                 ]
-
             };
-
             var graphTarget = $("#myChart");
-
             var barGraph = new Chart(graphTarget, {
                 type: 'doughnut',
                 data: chartdata,
@@ -281,7 +274,6 @@ function showGraphEx()
         });
     }
 }
-
 function showGraphIn()
 {
     {
@@ -291,13 +283,10 @@ function showGraphIn()
             console.log(data);
              var name = [];
             var amount = [];
-
             for (var i in data) {
-
                 name.push(data[i].name);
                 amount.push(data[i].amount);
             }
-
             var chartdata = {
                 labels: name,
                 datasets: [
@@ -308,11 +297,8 @@ function showGraphIn()
                         data: amount
                     }
                 ]
-
             };
-
             var graphTarget = $("#myChart2");
-
             var barGraph = new Chart(graphTarget, {
                 type: 'doughnut',
                 data: chartdata,
@@ -328,7 +314,3 @@ function showGraphIn()
     }
 }
 </script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="customjs.js"></script>

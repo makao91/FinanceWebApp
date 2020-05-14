@@ -5,7 +5,6 @@
 $user_nameReg = $_POST["nameReg"];
 $user_emailReg = $_POST["emailReg"];
 $user_passwordReg_hash = password_hash($_POST["passwordReg"], PASSWORD_DEFAULT);
-
 $emailSafe = filter_var($user_emailReg, FILTER_SANITIZE_EMAIL);
 
 mysqli_report(MYSQLI_REPORT_STRICT);
