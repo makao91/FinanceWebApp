@@ -2,7 +2,6 @@
 	session_start();
 	require_once "connect.php";
 	$userID = $_SESSION['id'];
-
 	$summIncome = 0;
 	$summExpense = 0;
 	$dateFrom = $_SESSION['dateFrom'];
@@ -19,8 +18,6 @@
 	{
 	  echo 'Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie. Informacja deweloperska: '.$e;
 	}
-	//$connect->close();
-
 	if(!isset($_SESSION['zalogowany']))
 	{
 		header('Location: index.php');
@@ -40,9 +37,10 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css" >
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Paaji+2:400,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css_style.css" type="text/css"/>
-	<script src="https://www.gstatic.com/charts/loader.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" type="text/css"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="customjs.js"></script>
+
 </head>
 <body>
 	<main>
@@ -97,17 +95,7 @@
 					</div>
 				</div>
 				<div id="showResult">
-					<div class="row align-items-center">
-						<div class="col-xl-5">
-							<div id="chart_div_inn"></div>
-						</div>
-						<div class="col-xl-5">
-							<div id="chart_div_exp"></div>
-						</div>
-					</div>
-				<div class="row">
-					<div class="col-md-3">
-					</div>
+				<div class="row justify-content-start">
 					<div class="col-md-3">
 						<table>
 							<tr><td colspan=2>Podsumowanie przychodów:</td></tr>
@@ -118,6 +106,8 @@
 		$summIncome+=$rowIncome["amount"];
 		$categoryIdIncome = $rowIncome["income_category_assigned_to_user_id"];
 		$catNameQueryIn = "SELECT name FROM incomes_category_assigned_to_users WHERE id = '$categoryIdIncome'";
+
+
 		$incomeCategoryNameSQLquerry = $connect->query($catNameQueryIn);
 		$rowCatIn = $incomeCategoryNameSQLquerry->fetch_assoc();
 		echo '<tr><td>'.$rowCatIn['name'].'</td><td>'.$rowIncome["amount"].' zł'.'</td></tr>';
@@ -128,8 +118,6 @@
 ?>
 						</table>
 					</div>
-					<div class="col-md-1">
-				</div>
 					<div class="col-md-3">
 						<table>
 							<tr><td colspan=2>Podsumowanie wydatków:</td></tr>
@@ -145,21 +133,30 @@
 		echo '<tr><td>'.$rowCatEx['name'].'</td><td>'.$rowExpense["amount"].' zł'.'</td></tr>';
 		$expenseCategoryNameSQLquerry->free_result();
 	}
+	$connect->close();
 	$fetchExpense->free_result();
 
 ?>
 						</table>
 					</div>
-						<div class="col-md-2">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-3 mx-auto text-center" id="resume">
-						<span class="h1">WYNIK</span>
+					<div class="col-6 text-center">
+						<span class="h1">PODSUMOWANIE</span>
 						<p class="h5">Wydatki: <?php echo $summExpense.' zł';?></p>
 						<p class="h5">Przychody: <?php echo $summIncome.' zł';?></p>
 						<p class="h3">SALDO</p>
 						<p><?php echo $summIncome-$summExpense.' zł';?></p>
+					</div>
+				</div>
+				<div class="row justify-content-start">
+					<div class="col-md-6">
+						<div class="chart-cnt">
+            	<canvas id="myChart" width="600" height="200"></canvas>
+        		</div>
+					</div>
+					<div class="col-md-6">
+						<div class="chart-cnt">
+							<canvas id="myChart2" width="600" height="200"></canvas>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -236,8 +233,102 @@ $(document).ready(function(){
 						}
 			 });
 	});
+	showGraphEx();
+	showGraphIn();
 });
+function showGraphEx()
+{
+    {
+        $.post("chartData.php",
+        function (data)
+        {
+            console.log(data);
+             var name = [];
+            var amount = [];
+
+            for (var i in data) {
+
+                name.push(data[i].name);
+                amount.push(data[i].amount);
+            }
+
+            var chartdata = {
+                labels: name,
+                datasets: [
+                    {
+                        backgroundColor: ["#92a8d1", "#034f84","#3cba9f","#e8c3b9","#c45850", "#f7786b", "#c94c4c", "#50394c", "#618685", "#4040a1", "#36486b", "#d64161", "#ff7b25", "#feb236", "#6b5b95", "#e3eaa7", "#b5e7a0", "#86af49", "#405d27", "#dac292", "#b9936c"],
+                        hoverBackgroundColor: '#CCCCCC',
+                        hoverBorderColor: '#666666',
+                        data: amount
+                    }
+                ]
+
+            };
+
+            var graphTarget = $("#myChart");
+
+            var barGraph = new Chart(graphTarget, {
+                type: 'doughnut',
+                data: chartdata,
+								options: {
+											title:
+													{
+														display: true,
+														text: 'Procentowy udział wydatków'
+													}
+												}
+            });
+        });
+    }
+}
+
+function showGraphIn()
+{
+    {
+        $.post("chartDataIncome.php",
+        function (data)
+        {
+            console.log(data);
+             var name = [];
+            var amount = [];
+
+            for (var i in data) {
+
+                name.push(data[i].name);
+                amount.push(data[i].amount);
+            }
+
+            var chartdata = {
+                labels: name,
+                datasets: [
+                    {
+                        backgroundColor: ["#d64161", "#ff7b25", "#feb236", "#6b5b95", "#e3eaa7", "#b5e7a0", "#86af49", "#405d27", "#dac292", "#b9936c", "#92a8d1", "#034f84","#3cba9f","#e8c3b9","#c45850", "#f7786b", "#c94c4c", "#50394c", "#618685", "#4040a1", "#36486b"],
+                        hoverBackgroundColor: '#CCCCCC',
+                        hoverBorderColor: '#666666',
+                        data: amount
+                    }
+                ]
+
+            };
+
+            var graphTarget = $("#myChart2");
+
+            var barGraph = new Chart(graphTarget, {
+                type: 'doughnut',
+                data: chartdata,
+								options: {
+											title:
+													{
+														display: true,
+														text: 'Procentowy udział przychodów'
+													}
+												}
+            });
+        });
+    }
+}
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="customjs.js"></script>
