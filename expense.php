@@ -17,7 +17,6 @@ try
   {
   	throw new Exception(mysqli_connect_errno());
   }
-
   if($expenseCategory!=1)
   {
     $paymentCategoryIdSQLquerry = "SELECT id FROM payment_methods_assigned_to_users WHERE user_id = '$userID' AND name = '$payMethod'";
@@ -34,7 +33,7 @@ try
                 VALUES ('$userID', '$expenseCategory','$realPaymentId', '$expenseAmount', '$expenseDate', '$expenseComment')";
                 if($connect->query($sqlExpense))
                 {
-                  echo 4;
+                  echo 4; //OK
                 }
                 else
                 {
@@ -43,13 +42,13 @@ try
               }
             else
               {
-                echo 1;
+                echo 1; //brak kwoty
               }
           }
         else
         {
-          echo 2;
-        }      
+          echo 2; //brak daty
+        }
       }
       else
         {
@@ -58,9 +57,9 @@ try
   }
   else
   {
-    echo 3;
+    echo 3; //brak kategorii
   }
-
+  $paymentCategoryId->free_result();
 }
 catch (Exception $e)
 {

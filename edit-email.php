@@ -15,7 +15,6 @@ try
   {
   	throw new Exception(mysqli_connect_errno());
   }
-
   if(filter_var($newEmailSafe, FILTER_VALIDATE_EMAIL)==false || ($newEmailSafe!=$new_email))
   {
     echo false;

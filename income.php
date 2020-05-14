@@ -14,8 +14,7 @@ try
   $connect = new mysqli($host,$db_user,$db_password,$db_name);
   if($connect->connect_errno!=0)
   {
-  	throw new Exception(mysqli_connect_errno());
-  }
+  	throw new Exception(mysqli_connect_errno());  }
 
   if($incomeCategory!=1)
   {
@@ -28,7 +27,7 @@ try
                 VALUES ('$userID', '$incomeCategory', '$incomeAmount', '$incomeDate', '$incomeComment')";
                 if($connect->query($sqlIncome))
                 {
-                  echo 4;
+                  echo 4; //OK
                 }
                 else
                 {
@@ -37,19 +36,18 @@ try
               }
             else
               {
-                echo 1;
+                echo 1; //brak kwoty
               }
           }
         else
         {
-          echo 2;
+          echo 2; // brak daty
         }
   }
   else
   {
-    echo 3;
+    echo 3; // brak kategorii
   }
-
 }
 catch (Exception $e)
 {

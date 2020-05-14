@@ -12,7 +12,6 @@ if($connect->connect_errno!=0)
 $user_login = $_POST["emailLog"];
 $user_password = $_POST["passwordLog"];
 $user_login = htmlentities($user_login, ENT_QUOTES, "UTF-8");
-
  if(isset($_POST["emailLog"]))
  {
       if($result = @$connect->query(

@@ -11,7 +11,6 @@ try
   {
   	throw new Exception(mysqli_connect_errno());
   }
-
     if(!isset($_POST['searchTerm']))
     {
       $fetchData = mysqli_query($connect, "SELECT * FROM expenses_category_assigned_to_users WHERE user_id = '$userID' ORDER BY name");
@@ -26,10 +25,8 @@ try
   {
     $data[] = array('id'=>$row['id'], 'text'=>$row['name']);
   }
-
   $fetchData->free_result();
   echo json_encode($data);
-
 }
 catch (Exception $e)
 {
