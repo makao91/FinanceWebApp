@@ -2,11 +2,12 @@
 require_once "connect.php";
 session_start();
 $userID = $_SESSION['id'];
-
 mysqli_report(MYSQLI_REPORT_STRICT);
 try
 {
   $connect = new mysqli($host,$db_user,$db_password,$db_name);
+  $connect -> query ('SET NAMES utf8');
+  $connect -> query ('SET CHARACTER_SET utf8_unicode_ci');
   if($connect->connect_errno!=0)
   {
   	throw new Exception(mysqli_connect_errno());

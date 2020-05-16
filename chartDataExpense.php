@@ -10,6 +10,8 @@ $dateTo = $_SESSION['dateTo'];
 try
 {
   $conn = new mysqli($host,$db_user,$db_password,$db_name);
+  $conn -> query ('SET NAMES utf8');
+  $conn -> query ('SET CHARACTER_SET utf8_unicode_ci');
   if($conn->connect_errno!=0)
   {
   	throw new Exception(mysqli_connect_errno());

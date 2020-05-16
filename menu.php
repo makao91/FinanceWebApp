@@ -585,7 +585,7 @@
  			               cache: true
  			              }
  			             });
-  });
+});
 	$("#expenseComment").keypress(function(event) {
 			if (event.keyCode === 13) {
 					$("#addExpenseBtn").click();
@@ -611,4 +611,4 @@
 					$("#editNameButt").click();
 			}
 	});
-	</script>
+</script>

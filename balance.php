@@ -9,6 +9,8 @@
 	try
 	{
 	  $connect = new mysqli($host,$db_user,$db_password,$db_name);
+		$connect -> query ('SET NAMES utf8');
+		$connect -> query ('SET CHARACTER_SET utf8_unicode_ci');
 	  if($connect->connect_errno!=0)
 	  {
 	  	throw new Exception(mysqli_connect_errno());
@@ -71,12 +73,12 @@
 					</div>
 					<div class="col-lg-6">
 						<div class="dropdown">
-						  <button class="btn btn-info btn-block btn-lg dropdown-toggle mt-2 mb-1" type="button" id="dateFromToWorkWith" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						  <button class="btn btn-info btn-block btn-lg dropdown-toggle mt-2 mb-1" data-flip="false" type="button" id="dateFromToWorkWith" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<?php
 									echo $_SESSION['dateFrom'].' do '.$_SESSION['dateTo'];
 								 ?>
 						  </button>
-						  <div class="dropdown-menu" aria-labelledby="dateFromToWorkWith">
+						  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dateFromToWorkWith">
 						    <button type="button" id="actualMonth" name="actualMonth" class="dropdown-item">Aktualny miesiąc</button>
 								<button type="button" id="previousMonth" name="previousMonth" class="dropdown-item">Poprzedni miesiąc</button>
 						    <button type="button" id="wholeYear" name="wholeYear" class="dropdown-item">Bierzący cały rok</button>
