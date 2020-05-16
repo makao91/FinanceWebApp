@@ -13,7 +13,7 @@
 <html lang="pl">
 <head>
 	<meta charset="utf-8" />
-	<title>Tytuł</title>
+	<title>Menu</title>
 	<meta name="description" content="Opis strony" />
 	<meta name="keywords" content="slowa, klucze" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -586,4 +586,29 @@
  			              }
  			             });
   });
+	$("#expenseComment").keypress(function(event) {
+			if (event.keyCode === 13) {
+					$("#addExpenseBtn").click();
+			}
+	});
+	$("#incomeComment").keypress(function(event) {
+			if (event.keyCode === 13) {
+					$("#addIncomeBtn").click();
+			}
+	});
+	$("#passEdit").keypress(function(event) {
+			if (event.keyCode === 13) {
+					$("#editPassButt").click();
+			}
+	});
+	$("#emailEdit").keypress(function(event) {
+			if (event.keyCode === 13) {
+					$("#editEmailButt").click();
+			}
+	});
+	$("#nameEdit").keypress(function(event) {
+			if (event.keyCode === 13) {
+					$("#editNameButt").click();
+			}
+	});
 	</script>

@@ -12,7 +12,7 @@
 <html lang="pl">
 <head>
 	<meta charset="utf-8" />
-	<title>Tytuł</title>
+	<title>Zadbaj o swoje finanse</title>
 	<meta name="description" content="Opis strony" />
 	<meta name="keywords" content="slowa, klucze" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
@@ -27,7 +27,9 @@
 </head>
 
 <body>
-<audio preload="auto" autoplay loop src="sound/music.mp3">Play music</audio>
+<audio autoplay loop>
+	<source src="sound/music.mp3" type="audio/mpeg">
+</audio>
 	<main>
 		<header>
 			<div class="containerLogo my-5 p-">
@@ -112,7 +114,7 @@
 					<label class="regulamin">
 						<input  class="m-1" type="checkbox" name="statute" id="statute">Akceptuję regulamin</input>
 					</label>
-					<button type="submit" name="reg-butt" id="reg-butt" class="btn btn-primary btn-lg btn-block">Zarejestruj się</button>
+					<button type="button" name="reg-butt" id="reg-butt" class="btn btn-primary btn-lg btn-block">Zarejestruj się</button>
 				</div>
 				</div>
       </form>
@@ -252,6 +254,20 @@ $(document).ready(function(){
 							 alert("Wszystkie pola są wymagane.");
 					}
 		 });
-
+});
+$("#passwordLog").keypress(function(event) {
+		if (event.keyCode === 13) {
+				$("#log-butt").click();
+		}
+});
+$("#passwordReg2").keypress(function(event) {
+		if (event.keyCode === 13) {
+				$("#reg-butt").click();
+		}
+});
+$("#statute").keypress(function(event) {
+		if (event.keyCode === 13) {
+				$("#reg-butt").click();
+		}
 });
 </script>
