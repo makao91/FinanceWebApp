@@ -1,4 +1,5 @@
 <?php
+require_once "connect.php";
 header('Content-Type: application/json');
 session_start();
 
@@ -8,7 +9,7 @@ $dateTo = $_SESSION['dateTo'];
 
 try
 {
-  $conn = mysqli_connect("localhost","root","","finance_app");
+  $conn = new mysqli($host,$db_user,$db_password,$db_name);
   if($conn->connect_errno!=0)
   {
   	throw new Exception(mysqli_connect_errno());

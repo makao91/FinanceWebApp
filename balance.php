@@ -29,7 +29,7 @@
 <html lang="pl">
 <head>
 	<meta charset="utf-8" />
-	<title>Tytuł</title>
+	<title>Przegląd finansów</title>
 	<meta name="description" content="Opis strony" />
 	<meta name="keywords" content="slowa, klucze" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -42,7 +42,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="customjs.js"></script>
+	<script type="text/javascript" src="js/customjs.js"></script>
 
 </head>
 <body>
