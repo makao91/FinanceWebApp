@@ -1,6 +1,6 @@
 <?php
 	$host = "localhost";
-	$db_user = "localhost";
-	$db_password = "";
-	$db_name = "finance_app";
+	$db_user = "budgetma_budgetma";
+	$db_password = "kolobolo07";
+	$db_name = "budgetma_aplikacja_finansowa";
  ?>
